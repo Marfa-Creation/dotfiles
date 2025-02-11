@@ -1,0 +1,42 @@
+theme = "tokyonight_storm"
+
+# [editor]
+# auto-format = false
+# idle-timeout = 250
+# auto-save = true
+# idle-save = tr=
+[editor]
+idle-timeout = 800
+
+[editor.auto-save]
+after-delay.enable = true
+after-delay.timeout = 0
+focus-lost = true
+
+[editor.lsp]
+display-inlay-hints = true
+
+[editor.cursor-shape]
+insert = "bar"
+
+[keys.insert]
+"C-h" = "move_char_left"
+"C-l" = "move_char_right"
+"C-j" = "move_visual_line_down"
+"C-k" = "move_visual_line_up"
+left = "no_op"
+right = "no_op"
+up = "no_op"
+down = "no_op"
+
+[keys.normal]
+left = "no_op"
+right = "no_op"
+up = "no_op"
+down = "no_op"
+
+"C-h" = "move_char_left"
+"C-l" = "move_char_right"
+"C-j" = "move_visual_line_down"
+"C-k" = "move_visual_line_up"
+ # [editor.inline-diagnostics] # cursor-line = "warning" # [editor] # end-of-line-diagnostics = "hint" # [editor.inline-diagnostics] # cursor-line = "warning"

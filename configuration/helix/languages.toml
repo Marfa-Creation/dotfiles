@@ -1,0 +1,25 @@
+[language-server.tailwindcss]
+command = "tailwindcss-language-server"
+args = ["--stdio"]
+
+[[language]]
+name = "rust"
+language-servers = ["rust-analyzer", "tailwindcss"]
+auto-format = false
+
+[[language]]
+name = "dart"
+auto-format = false
+
+[[language]]
+name = "html"
+auto-format = false
+
+[[language]]
+name = "css"
+auto-format = false
+
+[[language]]
+name = "toml"
+auto-format = false
+formatter = { command = "taplo", args = ["fmt", "-"] }
