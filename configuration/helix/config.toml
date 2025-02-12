@@ -1,10 +1,5 @@
 theme = "tokyonight_storm"
 
-# [editor]
-# auto-format = false
-# idle-timeout = 250
-# auto-save = true
-# idle-save = tr=
 [editor]
 idle-timeout = 800
 
@@ -39,4 +34,3 @@ down = "no_op"
 "C-l" = "move_char_right"
 "C-j" = "move_visual_line_down"
 "C-k" = "move_visual_line_up"
- # [editor.inline-diagnostics] # cursor-line = "warning" # [editor] # end-of-line-diagnostics = "hint" # [editor.inline-diagnostics] # cursor-line = "warning"
