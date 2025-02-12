@@ -76,7 +76,10 @@ sudo pacman -S nemo
 
 # install pomodoro time
 echo "install pomodoro timer"
-sudo pacman -S francis
+sudo wget "https://aur.archlinux.org/cgit/aur.git/snapshot/gnome-shell-pomodoro.tar.gz"
+tar -xvf gnome-shell-pomodoro.tar.gz && cd gnome-shell-pomodoro
+makepkg -s
+makepkg -i
 
 # install screenshot program
 echo "install screenshot program"
