@@ -65,6 +65,7 @@ pacman -S openvpn
 # install font
 echo "install font"
 pacman -S ttf-jetbrains-mono-nerd
+sudo pacman -S adobe-source-han-sans-jp-fonts
 
 # install hellij
 echo "install zellij"
@@ -72,7 +73,7 @@ pacman -S zellij
 
 # install file manager
 echo "install file manager"
-sudo pacman -S nemo
+sudo pacman -S ranger
 
 # install pomodoro time
 echo "install pomodoro timer"
