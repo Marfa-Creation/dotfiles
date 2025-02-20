@@ -2,6 +2,11 @@ theme = "tokyonight_storm"
 
 [editor]
 idle-timeout = 800
+end-of-line-diagnostics = "hint"
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+other-lines = "error"
 
 [editor.auto-save]
 after-delay.enable = true
