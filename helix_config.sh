@@ -9,7 +9,7 @@ sudo pacman -S xclip
 sudo pacman -S xsel
 
 # install LSP
-sudo npm i -g vscode-langservers-extracted
-sudo npm i -g @tailwindcss/language-server
+npm i -g vscode-langservers-extracted
+npm i -g @tailwindcss/language-server
 cargo install taplo-cli --features lsp
 
