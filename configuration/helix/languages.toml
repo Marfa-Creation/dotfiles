@@ -8,7 +8,12 @@ language-servers = ["rust-analyzer", "tailwindcss"]
 auto-format = false
 
 [language-server.rust-analyzer]
-config = { procMacro = { ignored = { leptos_macro = ["server"] } } }
+config = { cargo = { features = [
+  "ssr",
+  "csr",
+] }, procMacro = { ignored = { leptos_macro = [
+  "server",
+] } } }
 
 [[language]]
 name = "dart"
