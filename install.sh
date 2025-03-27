@@ -1,10 +1,12 @@
 #!/bin/bash
 
-
 ## script for installing every software
 
+RED='\033[0;31m'
+NC='\033[0m'
+
 # initial installation
-echo "initial install"
+echo -e "${RED}initial install${NC}"
 sudo pacman -Syu
 sudo pacman -S wget
 sudo pacman -S desktop-file-utils
@@ -12,44 +14,44 @@ sudo pacman -S base-devel
 cd ~/Downloads
 
 # install rust
-echo "install rust"
+echo -e "${RED}install rust${NC}"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # install git
-echo "install git"
+echo -e "${RED}install git${NC}"
 sudo pacman -S git
 
 # install npm
-echo "install npm"
+echo -e "${RED}install npm${NC}"
 sudo pacman -S npm
 
 # install yay AUR helper
-echo "install AUR helper"
+echo -e "${RED}install AUR helper${NC}"
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin
 makepkg -si
 cd ..
 
 # install browsers. brave and firefox
-echo "install browsers"
+echo -e "${RED}install browsers${NC}"
 curl -fsS https://dl.brave.com/install.sh | sh
 sudo pacman -S firefox-developer-edition
 
 # install helix editor
-echo "install helix"
+echo -e "${RED}install helix${NC}"
 sudo pacman -S helix
 
 # install alacritty terminal
-echo "install terminal"
+echo -e "${RED}install terminal${NC}"
 sudo pacman -S alacritty
 
 # install starship
-echo "install starship"
+echo -e "${RED}install starship${NC}"
 curl -sS https://starship.rs/install.sh | sh
 
 # install anki
-echo "install anki"
-sudo echo -n "enter anki version: "
+echo -e "${RED}install anki${NC}"
+sudo echo -e -${RED}n "enter anki version: ${NC}"
 read anki_ver
 sudo wget "https://github.com/ankitects/anki/releases/download/$anki_ver/anki-$anki_ver-linux-qt6.tar.zst"
 sudo tar -xvf "./anki-$anki_ver-linux-qt6.tar.zst"
@@ -59,41 +61,57 @@ sudo ./install.sh
 cd ..
 
 # install VPN
-echo "install VPN"
+echo -e "${RED}install VPN${NC}"
 pacman -S openvpn
 
 # install font
-echo "install font"
-pacman -S ttf-jetbrains-mono-nerd
-sudo pacman -S adobe-source-han-sans-jp-fonts
+echo -e "${RED}install font${NC}"
+sudo pacman -S ttf-jetbrains-mono-nerd \
+	noto-fonts \
+	noto-fonts-cjk \
+	noto-fonts-emoji
+
+# install input method program
+echo -e "${RED}install input method program${NC}"
+sudo pacman -S fcitx5-anthy fcitx5-configtool 
 
 # install hellij
-echo "install zellij"
-pacman -S zellij 
+echo -e "${RED}install zellij${NC}"
+sudo pacman -S zellij
 
 # install file manager
-echo "install file manager"
-sudo pacman -S ranger
+echo -e "${RED}install file manager${NC}"
+sudo pacman -S yazi
 
 # install pomodoro time
-echo "install pomodoro timer"
+echo -e "${RED}install pomodoro timer${NC}"
 sudo wget "https://aur.archlinux.org/cgit/aur.git/snapshot/gnome-shell-pomodoro.tar.gz"
 tar -xvf gnome-shell-pomodoro.tar.gz && cd gnome-shell-pomodoro
 makepkg -s
 makepkg -i
 
 # install screenshot program
-echo "install screenshot program"
-sudo pacman -S spectacle
+echo -e "${RED}install screenshot program${NC}"
+sudo pacman -S grim wl-copy slurp
 
 # install fastfetch
-echo "install fastfetch"
+echo -e "${RED}install fastfetch${NC}"
 sudo pacman -S fastfetch
 
 # install system monitor
-echo "install system monitor"
+echo -e "${RED}install system monitor${NC}"
 sudo pacman -S btop
 
 # install document editor
-echo "install document editor"
+echo -e "${RED}install document editor${NC}"
 yay -S onlyoffice-bin
+
+# install audio utils
+sudo pacman -S pipewire pipewire-pulse wireplumber \
+pavucontrol
+
+# install other utils
+echo -e "${RED}other utils{NC}"
+sudo pacman -S sway sway-bg \
+rofi rofi-calc \
+waybar

@@ -1,0 +1,70 @@
+* {
+    background-color: #24283b;
+    border-color: #1f2335;
+    separatorcolor: #1f2335;
+    text-color: #c0caf5;
+    font: "JetBrainsMonoNerdNL 10";
+}
+
+window {
+    transparency: "real";
+    location: center;
+    width: 25%;
+    height: 50%;
+}
+
+mainbox {
+    border: 2px;
+    border-color: @border-color;
+    padding: 10px;
+}
+
+inputbar {
+    background-color: #1f2335;
+    border: 2px;
+    border-color: @border-color;
+    text-color: @text-color;
+}
+
+listview {
+    fixed-height: 0;
+    border: 2px;
+    border-color: @border-color;
+    spacing: 5px;
+    scrollbar: false;
+}
+
+element {
+    padding: 5px;
+    border: 0;
+    border-radius: 0;
+}
+
+element normal {
+    background-color: @background-color;
+    text-color: @text-color;
+}
+
+element selected {
+    background-color: #bb9af7;
+    text-color: #1a1b26;
+}
+
+element urgent {
+    background-color: #f7768e;
+    text-color: #1a1b26;
+}
+
+element active {
+    background-color: #7aa2f7;
+    text-color: #1a1b26;
+}
+
+scrollbar {
+    width: 0;
+    border: 0;
+}
+
+entry {
+    padding: 0px 0px 0px 10px;
+}

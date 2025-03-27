@@ -8,6 +8,9 @@ end-of-line-diagnostics = "hint"
 cursor-line = "hint"
 other-lines = "error"
 
+[editor.file-picker]
+hidden = false
+
 [editor.auto-save]
 after-delay.enable = true
 after-delay.timeout = 0
