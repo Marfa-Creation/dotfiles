@@ -7,13 +7,9 @@ name = "rust"
 language-servers = ["rust-analyzer", "tailwindcss"]
 auto-format = false
 
-[language-server.rust-analyzer]
-config = { cargo = { features = [
-  "ssr",
-  "csr",
-] }, procMacro = { ignored = { leptos_macro = [
-  "server",
-] } } }
+[[language]]
+name = "bash"
+formatter = { command = "shfmt", args = ["--write"]}
 
 [[language]]
 name = "dart"

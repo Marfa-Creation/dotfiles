@@ -41,6 +41,19 @@ sudo pacman -S firefox-developer-edition
 echo -e "${RED}install helix${NC}"
 sudo pacman -S helix
 
+# install copy-paste program
+echo -e "${RED}install copy-paste program${NC}"
+sudo pacman -S wl-clipboard
+
+# install LSP & formatter
+echo -e "${RED}install LSP & formatter${NC}"
+npm i -g vscode-langservers-extracted
+npm i -g @tailwindcss/language-server
+npm i -g bash-language-server
+cargo install taplo-cli --features lsp
+sudo pacman -S shfmt
+
+
 # install alacritty terminal
 echo -e "${RED}install terminal${NC}"
 sudo pacman -S alacritty
@@ -92,7 +105,7 @@ makepkg -i
 
 # install screenshot program
 echo -e "${RED}install screenshot program${NC}"
-sudo pacman -S grim wl-copy slurp
+sudo pacman -S grim slurp
 
 # install fastfetch
 echo -e "${RED}install fastfetch${NC}"
