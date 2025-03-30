@@ -11,10 +11,9 @@ PS1='[\u@\h \W]\$ '
 eval "$(starship init bash)"
 
 # do not run on TTY
-# if [[ -z "$DISPLAY" && -z "$WAYLAND_DISPLAY" ]]; then
-# 	echo "exe"
+if [[ -n "$WAYLAND_DISPLAY" ]]; then
 	eval "$(zellij setup --generate-auto-start bash)"
-# fi
+fi
 
 . "$HOME/.cargo/env"
 export LC_ALL="en_US.UTF-8"
