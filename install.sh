@@ -94,7 +94,7 @@ sudo pacman -S zellij
 
 # install file manager
 echo -e "${RED}install file manager${NC}"
-sudo pacman -S yazi
+sudo pacman -S yazi nemo
 
 # install pomodoro time
 echo -e "${RED}install pomodoro timer${NC}"
@@ -125,6 +125,6 @@ pavucontrol
 
 # install other utils
 echo -e "${RED}other utils{NC}"
-sudo pacman -S sway sway-bg \
+sudo pacman -S sway swaybg swayidle swaylock \
 rofi rofi-calc \
 waybar
