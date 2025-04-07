@@ -13,8 +13,9 @@
 exec --no-startup-id systemctl --user restart wireplumber pipewire pipewire-pulse &
 exec --no-startup-id fcitx5 -dr 
 	
-exec --no-startup-id swayidle -w \
-timeout 600 'swaylock --color 000000 --text-color a9b1d6 --key-hl-color 7aa2f7 --bs-hl-color f7768e --inside-color 1a1b26 --inside-ver-color 9ece6a --inside-wrong-color f7768e --inside-caps-lock-color ff9e64 --ring-color 414868 --ring-ver-color 9ece6a --ring-wrong-color f7768e --ring-caps-lock-color ff9e6'
+exec swayidle -w \
+timeout 600 'swaymsg "output * dpms off"' \
+     resume 'swaymsg "output * dpms on"' 
 
 # wallpaper
 set $img "/home/marfa/Documents/hiragana and katakana.jpg"
