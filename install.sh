@@ -115,9 +115,10 @@ sudo pacman -S fastfetch
 echo -e "${RED}install system monitor${NC}"
 sudo pacman -S btop
 
-# install document editor
-echo -e "${RED}install document editor${NC}"
+# install document utils 
+echo -e "${RED}install document utils${NC}"
 yay -S onlyoffice-bin
+sudo pacman -S okular
 
 # install audio utils
 sudo pacman -S pipewire pipewire-pulse wireplumber \
