@@ -11,7 +11,7 @@ EnumerateSkipFirst=False
 ModifierOnlyKeyTimeout=250
 
 [Hotkey/TriggerKeys]
-0=Super+grave
+0=Control+Super+I
 1=Zenkaku_Hankaku
 2=Hangul
 

@@ -1,2 +1,2 @@
-use gnu stow to make symlink
-stow --no-folding -t ~ stow
+use gnu stow to create symlink in appropriate places
+`stow --no-folding -t ~ stow`
