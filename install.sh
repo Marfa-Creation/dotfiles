@@ -95,6 +95,8 @@ sudo pacman -S zellij
 # install file manager
 echo -e "${RED}install file manager${NC}"
 sudo pacman -S yazi nemo
+ya pack -a boydaihungst/simple-mtpfs
+yay -S simple-mtpfs
 
 # install pomodoro time
 echo -e "${RED}install pomodoro timer${NC}"
@@ -116,6 +118,10 @@ sudo pacman -S btop
 echo -e "${RED}install document utils${NC}"
 yay -S onlyoffice-bin
 sudo pacman -S okular
+
+# install multimedia utils
+echo -e "${RED}install multimedia utils${NC}"
+sudo pacman -S eog
 
 # install audio utils
 sudo pacman -S pipewire pipewire-pulse wireplumber \
