@@ -86,7 +86,7 @@ sudo pacman -S ttf-jetbrains-mono-nerd \
 
 # install input method program
 echo -e "${RED}install input method program${NC}"
-sudo pacman -S fcitx5-anthy fcitx5-configtool 
+sudo pacman -S fcitx5-anthy fcitx5-configtool wev
 
 # install hellij
 echo -e "${RED}install zellij${NC}"
