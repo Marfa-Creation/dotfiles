@@ -10,11 +10,6 @@ alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 eval "$(starship init bash)"
 
-# do not run on TTY
-if [[ -n "$WAYLAND_DISPLAY" ]]; then
-	eval "$(zellij setup --generate-auto-start bash)"
-fi
-
 . "$HOME/.cargo/env"
 export LC_ALL="en_US.UTF-8"
 function runasm() {
@@ -22,7 +17,27 @@ function runasm() {
   prefix=".asm"
   basename=${input%"$prefix"}
 
-  nasm -f elf64 -o "$basename.o" "$1"
+  # exit if empty
+  if [[ -z "$@" ]]; then
+		echo "no argument specified"
+		return 1
+  fi
+
+  for arg in "$@"
+  do
+
+		if [[ $arg == "--no-run" ]]; then
+			return
+		fi
+  
+  done  
+
+  nasm -g -f elf64 -o "$basename.o" "$1"
+
+  if [[ $? == 1 ]]; then
+  	return
+  fi
+
   ld "$basename.o" -o $basename
   sudo "./$basename" 
 }
@@ -30,6 +45,7 @@ function runasm() {
 # env var
 export EDITOR=helix
 export PATH="$PATH:~/.npm-global/bin"
+export ANKI_WAYLAND=1
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -38,4 +54,12 @@ function y() {
 		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
+}
+
+function helix() {
+	kitten @ set-background-opacity 1
+	
+	/usr/bin/helix "$@"
+
+	kitten @ set-background-opacity 0.7
 }

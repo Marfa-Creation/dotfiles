@@ -56,7 +56,7 @@ sudo pacman -S shfmt
 
 # install alacritty terminal
 echo -e "${RED}install terminal${NC}"
-sudo pacman -S alacritty
+sudo pacman -S kitty picom
 
 # install starship
 echo -e "${RED}install starship${NC}"
@@ -87,10 +87,6 @@ sudo pacman -S ttf-jetbrains-mono-nerd \
 # install input method program
 echo -e "${RED}install input method program${NC}"
 sudo pacman -S fcitx5-anthy fcitx5-configtool wev
-
-# install hellij
-echo -e "${RED}install zellij${NC}"
-sudo pacman -S zellij
 
 # install file manager
 echo -e "${RED}install file manager${NC}"
