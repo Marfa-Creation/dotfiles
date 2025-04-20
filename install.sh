@@ -25,6 +25,10 @@ sudo pacman -S git
 echo -e "${RED}install npm${NC}"
 sudo pacman -S npm
 
+# install bun
+echo -e "${RED}install bun${NC}"
+curl -fsSL https://bun.sh/install | bash
+
 # install yay AUR helper
 echo -e "${RED}install AUR helper${NC}"
 git clone https://aur.archlinux.org/yay-bin.git
@@ -50,6 +54,9 @@ echo -e "${RED}install LSP & formatter${NC}"
 npm i -g vscode-langservers-extracted
 npm i -g @tailwindcss/language-server
 npm i -g bash-language-server
+npm install -g typescript typescript-language-server
+npm i -g @vue/language-server
+npm i -g prettier
 cargo install taplo-cli --features lsp
 sudo pacman -S shfmt
 

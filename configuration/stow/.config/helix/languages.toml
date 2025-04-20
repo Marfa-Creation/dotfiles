@@ -33,21 +33,14 @@ auto-format = false
 name = "css"
 auto-format = false
 
-# [language-server.vue-language-server]
-# command = "vue-language-server"
-# args = ["--stdio"]
-# config = { typescript = { tsdk = "/home/marfa/.npm-global/lib/node_modules/typescript/lib" } }
-
 [[language]]
 name = "vue"
 formatter = { command = "prettier", args = ["--parser", "vue"] }
 language-servers = ["typescript-language-server"]
-# language-servers = ["vue-language-server"]
 
 [[language-server.typescript-language-server.config.plugins]]
 name = "@vue/typescript-plugin"
 location = "~/.npm-global/lib/node_modules/@vue/language-server/"
-# location = "/home/marfa/.npm-global/lib/node_modules/@vue/typescript-plugin"
 languages = ["vue"]
 
 [[language]]
