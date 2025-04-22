@@ -36,7 +36,7 @@ auto-format = false
 [[language]]
 name = "vue"
 formatter = { command = "prettier", args = ["--parser", "vue"] }
-language-servers = ["typescript-language-server"]
+language-servers = ["typescript-language-server", "tailwindcss"]
 
 [[language-server.typescript-language-server.config.plugins]]
 name = "@vue/typescript-plugin"
