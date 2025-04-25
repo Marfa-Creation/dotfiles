@@ -20,7 +20,9 @@ timeout 600 'swaymsg "output * dpms off"' \
 # wallpaper
 # set $img "/home/marfa/Downloads/yanami wallpaper_waifu2x_noise3_scale4x.png"
 set $img "/home/marfa/Documents/hiragana and katakana.jpg"
+# set $img "/home/marfa/Downloads/1080p yanami.png"
 exec_always swaybg -c 000000 -i $img -m fit &
+# exec_always swaybg -c 000000 -i $img -m fill &
 
 # sway output
 output * scale_filter linear
