@@ -21,6 +21,14 @@ auto-format = false
 name = "bash"
 formatter = { command = "shfmt", args = ["--write"] }
 
+[language-server.sql-language-server]
+command = "sql-language-server"
+args = ["up", "--method", "stdio"]
+
+[[language]]
+name = "sql"
+language-servers = [ "sql-language-server" ]
+
 [[language]]
 name = "dart"
 auto-format = false

@@ -3,6 +3,7 @@ theme = "tokyonight_storm"
 [editor]
 idle-timeout = 800
 end-of-line-diagnostics = "hint"
+line-number = "relative"
 
 [editor.inline-diagnostics]
 cursor-line = "hint"

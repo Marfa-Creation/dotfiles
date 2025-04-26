@@ -57,6 +57,7 @@ npm i -g bash-language-server
 npm install -g typescript typescript-language-server
 npm i -g @vue/language-server
 npm i -g prettier
+npm i -g sql-language-server
 cargo install taplo-cli --features lsp
 sudo pacman -S shfmt
 
