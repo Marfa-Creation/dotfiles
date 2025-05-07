@@ -9,7 +9,6 @@ command = "asm-lsp"
 name = "nasm"
 scope = "source.asm"
 file-types = ["asm"]
-# language-servers = ["asm-lsp"]
 indent = { tab-width = 2, unit = "  " }
 
 [[language]]

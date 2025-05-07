@@ -5,6 +5,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+fastfetch
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
@@ -46,6 +48,7 @@ function runasm() {
 export EDITOR=helix
 export PATH="$PATH:~/.npm-global/bin"
 export ANKI_WAYLAND=1
+export MOZ_ENABLE_WAYLAND=1
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd

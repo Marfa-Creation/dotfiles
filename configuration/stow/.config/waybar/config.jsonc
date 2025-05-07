@@ -1,6 +1,7 @@
 // -*- mode: jsonc -*-
 {
   // "layer": "top", // Waybar at top layer
+  "layer": "top",
   "position": "bottom", // Waybar position (top|bottom|left|right)
   "height": 35, // Waybar height (to be removed for auto height)
   // "width": 1280, // Waybar width
@@ -28,9 +29,9 @@
     "battery",
     // "battery#bat2",
     "backlight",
-    "backlight/slider",
+    // "backlight/slider",
     "pulseaudio",
-    "pulseaudio/slider",
+    // "pulseaudio/slider",
     "clock",
     "tray",
     "custom/power"
@@ -52,12 +53,15 @@
   //         "default": ""
   //     }
   // },
+  "sway/window": {
+    "max-length": 40
+  },
   "backlight/slider": {
     "min": 5
   },
-  "pulseaudio/slider": {
-    "orientation": "horizontal"
-  },
+  // "pulseaudio/slider": {
+  //   "orientation": "horizontal"
+  // },
   "keyboard-state": {
     "numlock": true,
     "capslock": true,
@@ -116,7 +120,7 @@
   },
   "tray": {
     // "icon-size": 21,
-    "spacing": 10
+    "spacing": 15
   },
   "clock": {
     // "timezone": "America/New_York",
@@ -125,7 +129,7 @@
   },
   "cpu": {
     "format": "{usage}% ",
-    "interval": "2",
+    "interval": "1",
     "tooltip": false
   },
   "memory": {
@@ -134,7 +138,7 @@
   "temperature": {
     // "thermal-zone": 2,
     // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-    "interval": "2",
+    "interval": "1",
     "critical-threshold": 80,
     // "format-critical": "{temperatureC}°C {icon}",
     "format": "{temperatureC}°C {icon}",
@@ -196,12 +200,13 @@
   },
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "on-click": "/bin/kitty nmtui",
     "format-wifi": "{essid} ({signalStrength}%) ",
     "format-ethernet": "{ipaddr}/{cidr} ",
     "tooltip-format": "{ifname} via {gwaddr} ",
     "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    "format-disconnected": "Disconnected ⚠"
+    // "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
@@ -240,14 +245,15 @@
   },
   "custom/power": {
     "format": "⏻ ",
-    "tooltip": false,
-    "menu": "on-click",
-    "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-    "menu-actions": {
-      "shutdown": "shutdown",
-      "reboot": "reboot",
-      "suspend": "systemctl suspend",
-      "hibernate": "systemctl hibernate"
-    }
+    // "tooltip": false,
+    "on-click": "~/.config/waybar/power_menu.sh"
+    // "menu": "on-click",
+    // "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+    // "menu-actions": {
+    //   "shutdown": "shutdown",
+    //   "reboot": "reboot",
+    //   "suspend": "systemctl suspend",
+    //   "hibernate": "systemctl hibernate"
+    // }
   }
 }

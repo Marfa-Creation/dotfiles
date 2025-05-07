@@ -1,0 +1,74 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "display": {
+    "separator": "• "
+  },
+  "logo": {
+    "type": "kitty",
+    "source": "~/Downloads/bocchi.webp",
+    "width": 30,
+    "padding": {
+      "top": 0,
+      "left": 2
+    }
+  },
+  "modules": [
+    "break",
+    {
+      "type": "custom",
+      "format": "{##9ECE6A}=> Info"
+    },
+    {
+      "type": "custom",
+      "format": "{##7AA2F7}╭──────────────────────────────────────────────────────╮"
+    },
+    {
+      "type": "os",
+      "key": "{##F7768E} OS           ",
+      "format": "{2} ({12})"
+    },
+    {
+      "type": "host",
+      "key": "{##F7768E} Device       "
+    },
+    {
+      "type": "kernel",
+      "key": "{##F7768E} Kernel       ",
+      "format": "{1} ({2})"
+    },
+    {
+      "type": "wm",
+      "key": "{##F7768E} WM           ",
+      "format": "{1} ({3})"
+    },
+    {
+      "type": "shell",
+      "key": "{##F7768E} Shell        "
+    },
+    {
+      "type": "terminal",
+      "key": "{##F7768E} Terminal     "
+    },
+    {
+      "type": "uptime",
+      "key": "{##F7768E} Uptime       "
+    },
+    {
+      "type": "memory",
+      "key": "{##F7768E} Memory       "
+    },
+    {
+      "type": "disk",
+      "key": "{##F7768E} Disk         "
+    },
+    {
+      "type": "packages",
+      "key": "{##F7768E} Packages     "
+    },
+    {
+      "type": "custom",
+      "key": " ",
+      "format": "{##7AA2F7}╰──────────────────────────────────────────────────────╯"
+    }
+  ]
+}

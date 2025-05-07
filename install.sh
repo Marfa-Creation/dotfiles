@@ -90,7 +90,8 @@ echo -e "${RED}install font${NC}"
 sudo pacman -S ttf-jetbrains-mono-nerd \
 	noto-fonts \
 	noto-fonts-cjk \
-	noto-fonts-emoji
+	noto-fonts-emoji \
+	ttf-font-awesome
 
 # install input method program
 echo -e "${RED}install input method program${NC}"
@@ -106,13 +107,13 @@ yay -S simple-mtpfs
 echo -e "${RED}install pomodoro timer${NC}"
 yay -S gnome-shell-pomodoro
 
-# install screenshot program
-echo -e "${RED}install screenshot program${NC}"
-sudo pacman -S grim slurp
+# install screen capture program
+echo -e "${RED}install screen capture program${NC}"
+sudo pacman -S grim wf-recorder slurp
 
 # install fastfetch
 echo -e "${RED}install fastfetch${NC}"
-sudo pacman -S fastfetch
+sudo pacman -S fastfetch imagemagick
 
 # install system monitor
 echo -e "${RED}install system monitor${NC}"
@@ -125,14 +126,27 @@ sudo pacman -S okular
 
 # install multimedia utils
 echo -e "${RED}install multimedia utils${NC}"
-sudo pacman -S eog
+sudo pacman -S eog mpv vvave
 
 # install audio utils
+echo -e "${RED}install audio utils${NC}"
 sudo pacman -S pipewire pipewire-pulse wireplumber \
 pavucontrol
 
-# install other utils
-echo -e "${RED}other utils{NC}"
-sudo pacman -S sway swaybg swayidle swaylock \
-rofi rofi-calc \
-waybar
+# install network utils
+echo -e "${RED}install network utils${NC}"
+pacman -S networkmanager
+
+# install sway utils
+echo -e "${RED}install other utils{NC}"
+yay -S swaylock-effects
+sudo pacman -S sway swaybg swayidle \
+rofi-wayland rofi-calc \
+waybar 
+yay -S light
+
+# install hyprland utils
+echo -e "${RED}install hyprland utils{NC}"
+pacman -S xdg-desktop-portal-hyprland dunst hyprpolkitagent
+pacman -S qt5-wayland qt6-wayland
+pacman -S hyprpaper

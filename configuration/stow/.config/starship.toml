@@ -1,20 +1,57 @@
+# format = """
+# [](bg:#769ff0 fg:#a3aed2)\
+# $directory\
+# [](fg:#769ff0 bg:#394260)\
+# $git_branch\
+# $git_status\
+# [](fg:#394260 bg:#212736)\
+# $rust\
+# [](fg:#212736 bg:#1d2230)\
+# [ ](fg:#1d2230)\
+# \n$character"""
+
+# [directory]
+# style = "fg:#e3e5e5 bg:#769ff0"
+# format = "[ $path ]($style)"
+# truncation_length = 8
+# truncate_to_repo = false
+# truncation_symbol = "../"
+
+# [directory.substitutions]
+# "Documents" = "󰈙 "
+# "Downloads" = " "
+# "Music" = " "
+# "Pictures" = " "
+
+# [git_branch]
+# symbol = ""
+# style = "bg:#394260"
+# format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
+
+# [git_status]
+# style = "bg:#394260"
+# format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
+
+# [rust]
+# symbol = ""
+# style = "bg:#212736"
+# format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+
 format = """
-[](bg:#769ff0 fg:#a3aed2)\
+[](bg:#7aa2f7 fg:#c0caf5)\
 $directory\
-[](fg:#769ff0 bg:#394260)\
+[](fg:#7aa2f7 bg:#414868)\
 $git_branch\
 $git_status\
-[](fg:#394260 bg:#212736)\
+[](fg:#414868 bg:#24283b)\
 $rust\
-[](fg:#212736 bg:#1d2230)\
+[](fg:#24283b bg:#1d2230)\
 [ ](fg:#1d2230)\
 \n$character"""
-# [  ](bg:#a3aed2 fg:#090c0c)\
-# [░▒▓](#a3aed2)\
-# $time\
 
 [directory]
-style = "fg:#e3e5e5 bg:#769ff0"
+style = "fg:#f7f7f7 bg:#7aa2f7"
 format = "[ $path ]($style)"
 truncation_length = 8
 truncate_to_repo = false
@@ -28,15 +65,15 @@ truncation_symbol = "../"
 
 [git_branch]
 symbol = ""
-style = "bg:#394260"
-format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
+style = "bg:#414868"
+format = '[[ $symbol $branch ](fg:#c0caf5 bg:#414868)]($style)'
 
 [git_status]
-style = "bg:#394260"
-format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
+style = "bg:#414868"
+format = '[[($all_status$ahead_behind )](fg:#c0caf5 bg:#414868)]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
-
+style = "bg:#24283b"
+format = '[[ $symbol ($version) ](fg:#c0caf5 bg:#24283b)]($style)'
+ 
