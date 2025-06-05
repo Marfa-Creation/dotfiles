@@ -10,7 +10,7 @@ command = "asm-lsp"
 name = "nasm"
 scope = "source.asm"
 file-types = ["asm"]
-indent = { tab-width = 2 }
+indent = { tab-width = 2, unit = "  " }
 
 [[language]]
 name = "rust"
