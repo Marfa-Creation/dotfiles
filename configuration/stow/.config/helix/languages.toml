@@ -1,5 +1,6 @@
 [language-server.tailwindcss]
 command = "tailwindcss-language-server"
+config = { userLanguages = { rust = "html", "*.rs" = "html" } }
 args = ["--stdio"]
 
 [language-server.asm-lsp]
@@ -9,12 +10,15 @@ command = "asm-lsp"
 name = "nasm"
 scope = "source.asm"
 file-types = ["asm"]
-indent = { tab-width = 2, unit = "  " }
+indent = { tab-width = 2 }
 
 [[language]]
 name = "rust"
 language-servers = ["rust-analyzer", "tailwindcss"]
 auto-format = false
+
+[language-server.rust-analyzer]
+config = { cargo = { allFeatures = true } }
 
 [[language]]
 name = "bash"
@@ -26,7 +30,7 @@ args = ["up", "--method", "stdio"]
 
 [[language]]
 name = "sql"
-language-servers = [ "sql-language-server" ]
+language-servers = ["sql-language-server"]
 
 [[language]]
 name = "dart"
@@ -47,7 +51,7 @@ language-servers = ["typescript-language-server", "tailwindcss"]
 
 [[language-server.typescript-language-server.config.plugins]]
 name = "@vue/typescript-plugin"
-location = "~/.npm-global/lib/node_modules/@vue/language-server/"
+location = "/home/marfa/.npm-global/lib/node_modules/@vue/language-server/"
 languages = ["vue"]
 
 [[language]]

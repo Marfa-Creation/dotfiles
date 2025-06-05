@@ -13,7 +13,9 @@
 exec --no-startup-id systemctl --user restart wireplumber pipewire pipewire-pulse &
 exec --no-startup-id fcitx5 -dr 
 exec --no-startup-id otd-daemon &
-	
+exec --no-startup-id dunst
+exec --no-startup-id watch -n 1800 'notify-send -t 30000 -u critical "$(shuf -n 1 ~/.words.txt)"'
+
 exec swayidle \
   timeout 300 '~/.config/sway/lock.sh' \
   timeout 600 'swaymsg "output * dpms off"' \

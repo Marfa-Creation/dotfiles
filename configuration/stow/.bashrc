@@ -11,6 +11,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 eval "$(starship init bash)"
+eval "$(zoxide init bash)"
 
 . "$HOME/.cargo/env"
 export LC_ALL="en_US.UTF-8"
@@ -46,6 +47,7 @@ function runasm() {
 
 # env var
 export EDITOR=helix
+export ELECTRON_OZONE_PLATFORM_HINT=auto
 export PATH="$PATH:~/.npm-global/bin"
 export ANKI_WAYLAND=1
 export MOZ_ENABLE_WAYLAND=1
@@ -70,3 +72,14 @@ function helix() {
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# fnm
+FNM_PATH="/home/marfa/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi

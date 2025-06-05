@@ -19,7 +19,7 @@ case "$choice" in
         ;;
     Lock)
         if command -v swaylock &>/dev/null; then
-            swaylock
+            ~/.config/sway/lock.sh
         elif command -v betterlockscreen &>/dev/null; then
             betterlockscreen -l
         else

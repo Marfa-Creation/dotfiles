@@ -1,0 +1,29 @@
+[global]
+font = Monospace 10
+frame_width = 2
+frame_color = "#414868"
+separator_color = frame
+padding = 10
+horizontal_padding = 10
+corner_radius = 8
+transparency = 0
+
+# Background and text defaults
+background = "#24283b"
+foreground = "#c0caf5"
+
+# Show urgency colors
+[urgency_low]
+background = "#24283b"
+foreground = "#9ece6a"
+frame_color = "#414868"
+
+[urgency_normal]
+background = "#24283b"
+foreground = "#7dcfff"
+frame_color = "#414868"
+
+[urgency_critical]
+background = "#24283b"
+foreground = "#f7768e"
+frame_color = "#f7768e"

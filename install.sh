@@ -81,6 +81,18 @@ cd ./anki-$anki_ver-linux-qt6
 sudo ./install.sh
 cd ..
 
+# install appimagelauncher
+echo -e "${RED}install appimagelauncher${NC}"
+yay -S appimagelauncher
+
+# install zoxide
+echo -e "${RED}install zoxide${NC}"
+sudo pacman -S zoxide
+
+# install dunst
+echo -e "${RED}install dunst${NC}"
+sudo pacman -S dunst
+
 # install VPN
 echo -e "${RED}install VPN${NC}"
 pacman -S openvpn
@@ -147,6 +159,6 @@ yay -S light
 
 # install hyprland utils
 echo -e "${RED}install hyprland utils{NC}"
-pacman -S xdg-desktop-portal-hyprland dunst hyprpolkitagent
-pacman -S qt5-wayland qt6-wayland
-pacman -S hyprpaper
+sudo pacman -S xdg-desktop-portal-hyprland hyprpolkitagent
+sudo pacman -S qt5-wayland qt6-wayland
+sudo pacman -S hyprpaper
