@@ -9,6 +9,7 @@ fastfetch
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias logseq='logseq --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3'
 PS1='[\u@\h \W]\$ '
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
@@ -51,6 +52,8 @@ export ELECTRON_OZONE_PLATFORM_HINT=auto
 export PATH="$PATH:~/.npm-global/bin"
 export ANKI_WAYLAND=1
 export MOZ_ENABLE_WAYLAND=1
+export ELECTRON_FLAGS="--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3"
+export QT_IM_MODULE=fcitx
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -67,6 +70,24 @@ function helix() {
 	/usr/bin/helix "$@"
 
 	kitten @ set-background-opacity 0.7
+}
+
+function math() {
+		brave &
+		gnome-pomodoro &
+		logseq &
+		sleep 30s
+		syncthing &
+}
+
+function language() {
+	brave &
+	gnome-pomodoro &
+	logseq &
+	anki --syncserver &
+	anki &
+	sleep 30s
+	syncthing &
 }
 
 # bun

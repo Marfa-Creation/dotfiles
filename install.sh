@@ -107,12 +107,14 @@ sudo pacman -S ttf-jetbrains-mono-nerd \
 
 # install input method program
 echo -e "${RED}install input method program${NC}"
-sudo pacman -S fcitx5-anthy fcitx5-configtool wev
+sudo pacman -S fcitx5-im fcitx5-anthy fcitx5-configtool wev
 
 # install file manager
 echo -e "${RED}install file manager${NC}"
 sudo pacman -S yazi nemo
-ya pack -a boydaihungst/simple-mtpfs
+ya pkg add boydaihungst/gvfs
+sudo pacman -S gvfs glib2
+sudo pacman -S gvfs-mtp gvfs-afc gvfs-google gvfs-gphoto2 gvfs-nfs gvfs-smb gvfs-afc gvfs-dnssd gvfs-goa gvfs-onedrive gvfs-wsdd
 yay -S simple-mtpfs
 
 # install pomodoro time
@@ -127,13 +129,17 @@ sudo pacman -S grim wf-recorder slurp
 echo -e "${RED}install fastfetch${NC}"
 sudo pacman -S fastfetch imagemagick
 
+# install shell
+echo -e "${RED}install fastfetch${NC}"
+sudo pacman -S nushell
+
 # install system monitor
 echo -e "${RED}install system monitor${NC}"
 sudo pacman -S btop
 
 # install document utils 
 echo -e "${RED}install document utils${NC}"
-yay -S onlyoffice-bin
+yay -S onlyoffice-bin logseq-desktop-bin
 sudo pacman -S okular
 
 # install multimedia utils

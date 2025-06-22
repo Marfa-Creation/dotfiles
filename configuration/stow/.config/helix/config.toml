@@ -1,6 +1,7 @@
 theme = "tokyonight_storm"
 
 [editor]
+shell = ["nu", "-c"]
 idle-timeout = 800
 end-of-line-diagnostics = "hint"
 line-number = "relative"
@@ -24,6 +25,10 @@ display-inlay-hints = true
 insert = "bar"
 
 [keys.insert]
+# "esc" = [
+#   ":sh echo $(fcitx5-remote -n) > /tmp/fcitx5state; fcitx5-remote -c",
+#   "normal_mode",
+# ]
 "C-h" = "move_char_left"
 "C-l" = "move_char_right"
 "C-j" = "move_visual_line_down"
@@ -34,6 +39,27 @@ up = "no_op"
 down = "no_op"
 
 [keys.normal]
+# i = [
+#   ":sh if [ -e \"/tmp/fcitx5state\" ] && [ $(cat /tmp/fcitx5state) = \"anthy\" ]; then fcitx5-remote -o; fi",
+#   "insert_mode",
+# ]
+# a = [
+#   ":sh if [ -e \"/tmp/fcitx5state\" ] && [ $(cat /tmp/fcitx5state) = \"anthy\" ]; then fcitx5-remote -o; fi",
+#   "append_mode",
+# ]
+# c = [
+#   ":sh if [ -e \"/tmp/fcitx5state\" ] && [ $(cat /tmp/fcitx5state) = \"anthy\" ]; then fcitx5-remote -o; fi",
+#   "change_selection",
+# ]
+# o = [
+#   ":sh if [ -e \"/tmp/fcitx5state\" ] && [ $(cat /tmp/fcitx5state) = \"anthy\" ]; then fcitx5-remote -o; fi",
+#   "open_below",
+# ]
+# O = [
+#   ":sh if [ -e \"/tmp/fcitx5state\" ] && [ $(cat /tmp/fcitx5state) = \"anthy\" ]; then fcitx5-remote -o; fi",
+#   "open_above",
+# ]
+
 left = "no_op"
 right = "no_op"
 up = "no_op"

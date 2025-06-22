@@ -150,6 +150,8 @@
   },
   "backlight": {
     // "device": "acpi_video1",
+    "on-scroll-up": "",
+    "on-scroll-down": "",
     "format": "{percent}% {icon}",
     "format-icons": [
       "",
@@ -229,7 +231,9 @@
         ""
       ]
     },
-    "on-click": "pavucontrol"
+    "on-click": "pavucontrol",
+    "on-scroll-up": "",
+    "on-scroll-down": ""
   },
   "custom/media": {
     "format": "{icon} {text}",
