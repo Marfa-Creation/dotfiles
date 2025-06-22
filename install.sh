@@ -36,6 +36,10 @@ cd yay-bin
 makepkg -si
 cd ..
 
+# install pacman-static
+echo -e "${RED}install pacman-static${NC}"
+yay -S pacman-static
+
 # install browsers. brave and firefox
 echo -e "${RED}install browsers${NC}"
 curl -fsS https://dl.brave.com/install.sh | sh
@@ -130,7 +134,7 @@ echo -e "${RED}install fastfetch${NC}"
 sudo pacman -S fastfetch imagemagick
 
 # install shell
-echo -e "${RED}install fastfetch${NC}"
+echo -e "${RED}install shell${NC}"
 sudo pacman -S nushell
 
 # install system monitor
