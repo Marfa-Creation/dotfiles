@@ -49,6 +49,10 @@ sudo pacman -S firefox-developer-edition
 echo -e "${RED}install helix${NC}"
 sudo pacman -S helix
 
+# install syncthing
+echo -e "${RED}install syncthing${NC}"
+sudo pacman -S syncthing
+
 # install copy-paste program
 echo -e "${RED}install copy-paste program${NC}"
 sudo pacman -S wl-clipboard

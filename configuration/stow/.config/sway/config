@@ -35,6 +35,7 @@ output * scale 1.75
 # sway input
 input type:touchpad {
         tap enabled
+        drag_lock disabled
         natural_scroll enabled
 }
 input * repeat_delay 200

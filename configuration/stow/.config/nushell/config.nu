@@ -47,7 +47,7 @@ def language [username: string, password: string] {
 def --wrapped helix [...args] {
 	kitten @ set-background-opacity 1
 	^helix ...$args
-	if (pgrep helix | str join | str length) == 0  {
+	if (ps | where $it.name == helix | length) == 0  {
 			kitten @ set-background-opacity 0.7
 	}
 }
@@ -81,6 +81,7 @@ $env.PATH = [
   "/usr/sbin"
   "/sbin"
   "~/.local/bin"
+	"~/.cargo/bin"
 ]
 
 # theming
