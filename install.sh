@@ -96,7 +96,7 @@ sudo pacman -S dunst
 
 # install VPN
 echo -e "${RED}install VPN${NC}"
-pacman -S openvpn
+sudo pacman -S openvpn
 
 # install font
 echo -e "${RED}install font${NC}"
