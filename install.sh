@@ -80,14 +80,7 @@ curl -sS https://starship.rs/install.sh | sh
 
 # install anki
 echo -e "${RED}install anki${NC}"
-sudo echo -e -${RED}n "enter anki version: ${NC}"
-read anki_ver
-sudo wget "https://github.com/ankitects/anki/releases/download/$anki_ver/anki-$anki_ver-linux-qt6.tar.zst"
-sudo tar -xvf "./anki-$anki_ver-linux-qt6.tar.zst"
-sudo chmod +x ./"anki-$anki_ver-linux-qt6/install.sh"
-cd ./anki-$anki_ver-linux-qt6
-sudo ./install.sh
-cd ..
+yay -S anki-bin
 
 # install appimagelauncher
 echo -e "${RED}install appimagelauncher${NC}"
@@ -164,7 +157,7 @@ echo -e "${RED}install network utils${NC}"
 pacman -S networkmanager
 
 # install sway utils
-echo -e "${RED}install other utils{NC}"
+echo -e "${RED}install other utils${NC}"
 yay -S swaylock-effects
 sudo pacman -S sway swaybg swayidle \
 rofi-wayland rofi-calc \
@@ -172,7 +165,7 @@ waybar
 yay -S light
 
 # install hyprland utils
-echo -e "${RED}install hyprland utils{NC}"
+echo -e "${RED}install hyprland utils${NC}"
 sudo pacman -S xdg-desktop-portal-hyprland hyprpolkitagent
 sudo pacman -S qt5-wayland qt6-wayland
 sudo pacman -S hyprpaper

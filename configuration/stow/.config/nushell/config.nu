@@ -66,6 +66,14 @@ def --env y [...args] {
 }
 
 ## env var
+
+open /etc/locale.conf
+| lines
+| parse "{name}={value}"
+| str trim value --char '"'
+| transpose --header-row --as-record
+| load-env
+
 # configuration variable
 $env.ELECTRON_OZONE_PLATFORM_HINT = "auto"
 $env.ANKI_WAYLAND = 1
