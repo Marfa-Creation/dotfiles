@@ -89,6 +89,7 @@ run [npm i -g prettier] "install LSP & formatter"
 run [npm i -g sql-language-server] "install LSP & formatter"
 run [cargo install taplo-cli --features lsp] "install LSP & formatter"
 run [sudo pacman -S shfmt] "install LSP & formatter"
+run [rustup component add rust-analyzer] "install LSP & formatter"
 
 # install terminal
 big-text 'install terminal'
