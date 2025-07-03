@@ -37,9 +37,10 @@ run [/usr/bin/nu -c "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs |
 big-text 'install git'
 run [sudo pacman -S git] "install git"
 
-# install nodejs
-big-text 'install nodejs'
-run [sudo pacman -S nodejs] "install nodejs"
+# install npm
+big-text 'install npm'
+run [sudo pacman -S npm] "install npm"
+run [npm config set prefix ~/.npm-global] "install npm"
 
 # install bun
 big-text 'install bun'
