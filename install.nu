@@ -45,6 +45,10 @@ run [sudo pacman -S nodejs] "install nodejs"
 big-text 'install bun'
 run [/usr/bin/nu -c "curl -fsSL https://bun.sh/install | bash"] "install bun"
 
+# install tablet driver
+big-text "install tablet driver"
+run [yay -S opentabletdriver] "install tablet driver"
+
 # install yay AUR helper
 big-text 'install AUR helper'
 run [git clone https://aur.archlinux.org/yay-bin.git] "install AUR helper"
@@ -121,6 +125,10 @@ run [sudo pacman -S ttf-jetbrains-mono-nerd noto-fonts noto-fonts-cjk noto-fonts
 big-text 'install input method program'
 run [sudo pacman -S fcitx5-im fcitx5-anthy fcitx5-configtool wev] "install input method program"
 
+# install QT & GTK config tool
+big-text 'install QT & GTK config tool'
+run [sudo pacman -S qt5ct qt6ct nwg-look] "install QT & GTK config tool"
+
 # install file manager
 big-text 'install file manager'
 run [sudo pacman -S yazi nemo] "install file manager"
@@ -165,6 +173,8 @@ run [sudo pacman -S networkmanager] "install network utils"
 # install sway utils
 big-text 'install sway utils'
 run [yay -S swaylock-effects light] "install sway utils"
+run [sudo usermod -aG video (^whoami)] "install sway utils"
+run [light -N 5] "install sway utils"
 run [sudo pacman -S sway swaybg swayidle rofi-wayland rofi-calc waybar] "install sway utils"
 
 # install hyprland utils

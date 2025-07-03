@@ -30,7 +30,7 @@ exec_always swaybg -c 000000 -i $img -m fit &
 
 # sway output
 output * scale_filter linear
-output * scale 1.75
+output * scale 1
 
 # sway input
 input type:touchpad {
