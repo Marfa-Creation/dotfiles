@@ -117,7 +117,7 @@ run [sudo pacman -S dunst] "install dunst"
 
 # install VPN
 big-text 'install VPN'
-run [sudo pacman -S openvpn] "install VPN"
+run [sudo pacman -S openvpn wireguard-tools systemd-resolvconf proton-vpn-gtk-app] "install VPN"
 
 # install font
 big-text 'install font'
