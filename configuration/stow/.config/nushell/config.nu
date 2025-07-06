@@ -90,6 +90,7 @@ $env.PATH = [
   "/sbin"
   "~/.local/bin"
 	"~/.cargo/bin"
+	"~/.npm-global/bin"
 ]
 
 # theming
