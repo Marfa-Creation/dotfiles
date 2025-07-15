@@ -45,11 +45,11 @@ def language [username: string, password: string] {
 }
 
 def --wrapped helix [...args] {
-	kitten @ set-background-opacity 1
+	# kitten @ set-background-opacity 1
 	^helix ...$args
-	if (ps | where $it.name == helix | length) == 0  {
-			kitten @ set-background-opacity 0.7
-	}
+	# if (ps | where $it.name == helix | length) == 0  {
+	# 		kitten @ set-background-opacity 0.7
+	# }
 }
 def hx --wrapped [...args] {
 	helix ...$args

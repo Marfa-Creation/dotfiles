@@ -5,10 +5,10 @@
   },
   "logo": {
     "type": "kitty",
-    "source": "~/Downloads/bocchi.webp",
+    "source": "~/images/upscaled/image9.png",
     "width": 30,
     "padding": {
-      "top": 0,
+      "top": 1,
       "left": 2
     }
   },
