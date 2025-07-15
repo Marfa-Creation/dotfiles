@@ -1,5 +1,5 @@
 attribute = { fg = "cyan" }
-# comment = { fg = "comment", modifiers = ["italic"] }
+comment = { fg = "comment", modifiers = ["italic"] }
 "comment.block.documentation" = { fg = "yellow" }
 "comment.line.documentation" = { fg = "yellow" }
 constant = { fg = "orange" }
