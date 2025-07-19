@@ -112,6 +112,10 @@ run [yay -S appimagelauncher] "install appimagelauncher"
 big-text 'install zoxide'
 run [sudo pacman -S zoxide] "install zoxide"
 
+# install bat
+big-text 'install bat'
+run [sudo pacman -S bat] "install bat"
+
 # install dunst
 big-text 'install dunst'
 run [sudo pacman -S dunst] "install dunst"
