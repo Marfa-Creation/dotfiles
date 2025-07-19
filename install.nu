@@ -81,6 +81,7 @@ run [sudo pacman -S wl-clipboard] "install clipboard manager"
 # install LSP & formatter
 big-text 'install LSP & formatter'
 run [npm i -g vscode-langservers-extracted] "install LSP & formatter"
+run [npm install -g dockerfile-language-server-nodejs] "install LSP & formatter"
 run [npm i -g @tailwindcss/language-server] "install LSP & formatter"
 run [npm i -g bash-language-server] "install LSP & formatter"
 run [npm install -g typescript typescript-language-server] "install LSP & formatter"
