@@ -115,6 +115,10 @@ run [sudo pacman -S zoxide] "install zoxide"
 # install bat
 big-text 'install bat'
 run [sudo pacman -S bat] "install bat"
+ 
+# install bat
+big-text 'install ripgrep'
+run [sudo pacman -S ripgrep] "install ripgrep"
 
 # install dunst
 big-text 'install dunst'
