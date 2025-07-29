@@ -1,193 +1,289 @@
 #!/bin/nu
 
-touch ./last
-let last: string = open ./last | str trim;
+touch ./log
+let log: string = open ./log | str trim;
 
-# will remember which installation was failed
-# and then run from it when the script is re-runned
-def run [cmd: list, name: string] {
-  print $"command: ($cmd | str join ' ')"
-  if $last == $name or $last == "" {
-    # mark
-    $name | save -f ./last;
-
-    run-external ($cmd)
-  
-    # reset
-    "" | save -f ./last;
-  }  
+def is_done [name: string] {
+   $log | lines | any {|i| $i.name == name} 
 }
 
-def big-text [text: string] {
+def done [name: string] {
+  $name | save -a ./log
+}
+
+def big_text [text: string] {
   print $"(ansi greenyellow)(/usr/bin/figlet $text)(ansi reset)"
 } 
 
 # initial installation
-run [sudo pacman -Syu] "initial installation"
-run [sudo pacman -S wget] "initial installation"
-run [sudo pacman -S desktop-file-utils] "initial installation"
-run [sudo pacman -S base-devel] "initial installation"
-run [sudo pacman -S figlet] "initial installation"
+run [sudo pacman -Syu curl wget desktop-file-utils base-devel figlet] "initial installation"
 
 # install rust
-big-text 'install rust'
-run [/usr/bin/nu -c "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"] "install rust"
+if (is_done 'install rust') == false {
+  big_text 'install rust'
+  ^curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | ^sh
+  done 'install rust'
+}
 
 # install git
-big-text 'install git'
-run [sudo pacman -S git] "install git"
-
-# install npm
-big-text 'install npm'
-run [sudo pacman -S npm] "install npm"
-run [npm config set prefix ~/.npm-global] "install npm"
-
-# install bun
-big-text 'install bun'
-run [/usr/bin/nu -c "curl -fsSL https://bun.sh/install | bash"] "install bun"
-
-# install tablet driver
-big-text "install tablet driver"
-run [yay -S opentabletdriver] "install tablet driver"
+if (is_done 'install git') == false {
+  big_text 'install git'
+  sudo pacman -S git
+  done 'install git'
+}
 
 # install yay AUR helper
-big-text 'install AUR helper'
-run [git clone https://aur.archlinux.org/yay-bin.git] "install AUR helper"
-run [cd yay-bin] "install AUR helper"
-run [makepkg -si] "install AUR helper"
-run [cd ..] "install AUR helper"
+if (is_done 'install AUR helper') == false {
+  big_text 'install AUR helper'
+  git clone https://aur.archlinux.org/yay-bin.git
+  cd yay-bin 
+  makepkg -si 
+  cd .. 
+  done 'install AUR helper'
+}
+
+# install npm
+if (is_done 'install npm') == false {
+  big_text 'install npm'
+  sudo pacman -S npm
+  npm config set prefix ~/.npm-global
+  done 'install npm'
+}
+
+# install bun
+if (is_done 'install bun') == false {
+  big_text 'install bun'
+  sudo pacman -S unzip
+  /usr/bin/nu -c "curl -fsSL https://bun.sh/install | bash"
+  done 'install bun'
+}
+
+# install tablet driver
+if (is_done 'install tablet driver') == false {
+  big_text 'install tablet driver'
+  yay -S opentabletdriver
+  done 'install tablet driver'
+}
 
 # install pacman-static
-big-text 'install pacman-static'
-run [yay -S pacman-static] "install pacman-static"
+if (is_done 'install pacman-static') == false {
+  big_text 'install pacman-static'
+  yay -S pacman-static
+  done 'install pacman-static'
+}
 
-# install browsers. brave and firefox
-big-text 'install browsers'
-run [/usr/bin/nu -c "curl -fsS https://dl.brave.com/install.sh | sh"] "install browsers"
-run [sudo pacman -S firefox-developer-edition] "install browsers"
+# install browser
+if (is_done 'install browsers') == false {
+  big_text 'install browsers'
+  /usr/bin/nu -c "curl -fsS https://dl.brave.com/install.sh | sh"
+  yay -S zen-browser-bin
+  sudo pacman -S firefox-developer-edition
+  done 'install browsers'
+}
 
-# install helix editor
-big-text 'install helix editor'
-run [sudo pacman -S helix] "install helix editor"
+# install helix
+if (is_done 'install helix editor') == false {
+  big_text 'install helix editor'
+  sudo pacman -S helix
+  done 'install helix editor'
+}
 
 # install syncthing
-big-text 'install syncthing'
-run [sudo pacman -S syncthing] "install syncthing"
+if (is_done 'install syncthing') == false {
+  big_text 'install syncthing'
+  sudo pacman -S syncthing
+  done 'install syncthing'
+}
 
 # install clipboard manager
-big-text 'install clipboard manager'
-run [sudo pacman -S wl-clipboard] "install clipboard manager"
+if (is_done 'install clipboard manager') == false {
+  big_text 'install clipboard manager'
+  sudo pacman -S wl-clipboard
+  done 'install clipboard manager'
+}
 
 # install LSP & formatter
-big-text 'install LSP & formatter'
-run [npm i -g vscode-langservers-extracted] "install LSP & formatter"
-run [npm install -g dockerfile-language-server-nodejs] "install LSP & formatter"
-run [npm i -g @tailwindcss/language-server] "install LSP & formatter"
-run [npm i -g bash-language-server] "install LSP & formatter"
-run [npm install -g typescript typescript-language-server] "install LSP & formatter"
-run [npm i -g @vue/language-server] "install LSP & formatter"
-run [npm i -g prettier] "install LSP & formatter"
-run [npm i -g sql-language-server] "install LSP & formatter"
-run [cargo install taplo-cli --features lsp] "install LSP & formatter"
-run [sudo pacman -S shfmt] "install LSP & formatter"
-run [rustup component add rust-analyzer] "install LSP & formatter"
+if (is_done 'install LSP & formatter') == false {
+  big_text 'install LSP & formatter'
+  npm i -g vscode-langservers-extracted
+  npm install -g dockerfile-language-server-nodejs
+  npm i -g @tailwindcss/language-server
+  npm i -g bash-language-server
+  npm install -g typescript typescript-language-server
+  npm i -g @vue/language-server
+  npm i -g prettier
+  npm i -g sql-language-server
+  cargo install taplo-cli --features lsp
+  sudo pacman -S shfmt
+  rustup component add rust-analyzer
+  done 'install LSP & formatter'
+}
 
 # install terminal
-big-text 'install terminal'
-run [sudo pacman -S kitty picom] "install terminal"
+if (is_done 'install terminal') == false {
+  big_text 'install terminal'
+  sudo pacman -S kitty picom
+  done 'install terminal'
+}
 
 # install starship
-big-text 'install starship'
-run [sudo pacman -S starship] "install starship"
+if (is_done 'install starship') == false {
+  big_text 'install starship'
+  sudo pacman -S starship
+  done 'install starship'
+}
 
 # install anki
-big-text 'install anki'
-run [yay -S anki-bin] "install anki"
+if (is_done 'install anki') == false {
+  big_text 'install anki'
+  yay -S anki-bin
+  done 'install anki'
+}
 
 # install appimagelauncher
-big-text 'install appimagelauncher'
-run [yay -S appimagelauncher] "install appimagelauncher"
+if (is_done 'install appimagelauncher') == false {
+  big_text 'install appimagelauncher'
+  yay -S appimagelauncher
+  done 'install appimagelauncher'
+}
 
 # install zoxide
-big-text 'install zoxide'
-run [sudo pacman -S zoxide] "install zoxide"
+if (is_done 'install zoxide') == false {
+  big_text 'install zoxide'
+  sudo pacman -S zoxide
+  done 'install zoxide'
+}
 
 # install bat
-big-text 'install bat'
-run [sudo pacman -S bat] "install bat"
- 
-# install bat
-big-text 'install ripgrep'
-run [sudo pacman -S ripgrep] "install ripgrep"
+if (is_done 'install bat') == false {
+  big_text 'install bat'
+  sudo pacman -S bat
+  done 'install bat'
+}
+
+# install ripgrep
+if (is_done 'install ripgrep') == false {
+  big_text 'install ripgrep'
+  sudo pacman -S ripgrep
+  done 'install ripgrep'
+}
 
 # install dunst
-big-text 'install dunst'
-run [sudo pacman -S dunst] "install dunst"
+if (is_done 'install dunst') == false {
+  big_text 'install dunst'
+  sudo pacman -S dunst
+  done 'install dunst'
+}
 
 # install VPN
-big-text 'install VPN'
-run [sudo pacman -S openvpn wireguard-tools systemd-resolvconf proton-vpn-gtk-app] "install VPN"
+if (is_done 'install VPN') == false {
+  big_text 'install VPN'
+  sudo pacman -S openvpn wireguard-tools systemd-resolvconf proton-vpn-gtk-app
+  done 'install VPN'
+}
 
 # install font
-big-text 'install font'
-run [sudo pacman -S ttf-jetbrains-mono-nerd noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-font-awesome] "install font"
+if (is_done 'install font') == false {
+  big_text 'install font'
+  sudo pacman -S ttf-jetbrains-mono-nerd noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-font-awesome
+  done 'install font'
+}
 
 # install input method program
-big-text 'install input method program'
-run [sudo pacman -S fcitx5-im fcitx5-anthy fcitx5-configtool wev] "install input method program"
+if (is_done 'install input method program') == false {
+  big_text 'install input method program'
+  sudo pacman -S fcitx5-im fcitx5-anthy fcitx5-configtool wev
+  done 'install input method program'
+}
 
-# install QT & GTK config tool
-big-text 'install QT & GTK config tool'
-run [sudo pacman -S qt5ct qt6ct nwg-look] "install QT & GTK config tool"
+# install install QT & GTK config tool
+if (is_done 'install QT & GTK config tool') == false {
+  big_text 'install QT & GTK config tool'
+  sudo pacman -S qt5ct qt6ct nwg-look
+  done 'install QT & GTK config tool'
+}
 
 # install file manager
-big-text 'install file manager'
-run [sudo pacman -S yazi nemo] "install file manager"
-run [ya pkg add boydaihungst/gvfs] "install file manager"
-run [sudo pacman -S gvfs glib2] "install file manager"
-run [sudo pacman -S gvfs-mtp gvfs-afc gvfs-google gvfs-gphoto2 gvfs-nfs gvfs-smb gvfs-afc gvfs-dnssd gvfs-goa gvfs-onedrive gvfs-wsdd] "install file manager"
-run [yay -S simple-mtpfs] "install file manager"
+if (is_done 'install file manager') == false {
+  big_text 'install file manager'
+  sudo pacman -S yazi nemo
+  ya pkg add boydaihungst/gvfs
+  sudo pacman -S gvfs glib2
+  sudo pacman -S gvfs-mtp gvfs-afc gvfs-google gvfs-gphoto2 gvfs-nfs gvfs-smb gvfs-afc gvfs-dnssd gvfs-goa gvfs-onedrive gvfs-wsdd
+  yay -S simple-mtpfs
+  done 'install file manager'
+}
 
 # install pomodoro timer
-big-text 'install pomodoro timer'
-run [yay -S gnome-shell-pomodoro] "install pomodoro timer"
+if (is_done 'install pomodoro timer') == false {
+  big_text 'install pomodoro timer'
+  yay -S gnome-shell-pomodoro
+  done 'install pomodoro timer'
+}
 
 # install screen capture program
-big-text 'install screen capture program'
-run [sudo pacman -S grim wf-recorder slurp] "install screen capture program"
+if (is_done 'install screen capture program') == false {
+  big_text 'install screen capture program'
+  sudo pacman -S grim wf-recorder slurp
+  done 'install screen capture program'
+}
 
 # install fastfetch
-big-text 'install fastfetch'
-run [sudo pacman -S fastfetch imagemagick] "install fastfetch"
+if (is_done 'install fastfetch') == false {
+  big_text 'install fastfetch'
+  sudo pacman -S fastfetch imagemagick
+  done 'install fastfetch'
+}
 
 # install system monitor
-big-text 'install system monitor'
-run [sudo pacman -S btop] "install system monitor"
+if (is_done 'install system monitor') == false {
+  big_text 'install system monitor'
+  sudo pacman -S btop
+  done 'install system monitor'
+}
 
-# install document utils 
-big-text 'install document utils '
-run [yay -S onlyoffice-bin logseq-desktop-bin] "install document utils"
-run [sudo pacman -S okular] "install document utils"
+# install document utils
+if (is_done 'install document utils') == false {
+  big_text 'install document utils'
+  yay -S onlyoffice-bin logseq-desktop-bin
+  sudo pacman -S okular
+  done 'install document utils'
+}
 
 # install multimedia utils
-big-text 'install multimedia utils'
-run [sudo pacman -S eog mpv vvave] "install multimedia utils"
+if (is_done 'install multimedia utils') == false {
+  big_text 'install multimedia utils'
+  sudo pacman -S eog mpv vvave
+  done 'install multimedia utils'
+}
 
 # install audio utils
-big-text 'install audio utils'
-run [sudo pacman -S pipewire pipewire-pulse wireplumber pavucontrol] "install audio utils"
+if (is_done 'install audio utils') == false {
+  big_text 'install audio utils'
+  sudo pacman -S pipewire pipewire-pulse wireplumber pavucontrol
+  done 'install audio utils'
+}
 
 # install network utils
-big-text 'install network utils'
-run [sudo pacman -S networkmanager] "install network utils"
+if (is_done 'install network utils') == false {
+  big_text 'install network utils'
+  sudo pacman -S networkmanager
+  done 'install network utils'
+}
 
 # install sway utils
-big-text 'install sway utils'
-run [yay -S swaylock-effects light] "install sway utils"
-run [sudo usermod -aG video (^whoami)] "install sway utils"
-run [light -N 5] "install sway utils"
-run [sudo pacman -S sway swaybg swayidle rofi-wayland rofi-calc waybar] "install sway utils"
+if (is_done 'install sway utils') == false {
+  big_text 'install sway utils'
+  yay -S swaylock-effects light
+  sudo usermod -aG video (^whoami)
+  light -N 5
+  sudo pacman -S sway swaybg swayidle rofi-wayland rofi-calc waybar
+  done 'install sway utils'
+}
 
 # install hyprland utils
-big-text 'install hyprland utils'
-run [sudo pacman -S xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland hyprpaper] "install hyprland utils"
+if (is_done 'install hyprland utils') == false {
+  big_text 'install hyprland utils'
+  sudo pacman -S xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland hyprpaper
+  done 'install hyprland utils'
+}
