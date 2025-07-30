@@ -8,7 +8,7 @@ def is_done [name: string] {
 }
 
 def done [name: string] {
-  $name | save -a ./log
+  $"($name)\n" | save -a ./log
 }
 
 def big_text [text: string] {
