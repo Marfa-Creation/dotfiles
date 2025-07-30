@@ -16,7 +16,10 @@ def big_text [text: string] {
 } 
 
 # initial installation
-sudo pacman -Syu curl wget desktop-file-utils base-devel figlet
+if (is_done 'initial installation') == false {
+  sudo pacman -Syu curl wget desktop-file-utils base-devel figlet
+  done 'initial installation'
+}
 
 # install rust
 if (is_done 'install rust') == false {
