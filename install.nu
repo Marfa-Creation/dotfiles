@@ -4,7 +4,7 @@ touch ./log
 let log: string = open ./log | str trim;
 
 def is_done [name: string] {
-   $log | lines | any {|i| $i.name == name} 
+   $log | lines | any {|i| $i == $name} 
 }
 
 def done [name: string] {
