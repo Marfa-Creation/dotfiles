@@ -102,11 +102,19 @@ if (is_done 'install clipboard manager') == false {
   done 'install clipboard manager'
 }
 
+# install docker
+if (is_done 'install docker') == false {
+  big_text 'install docker'
+  sudo pacman -S docker-buildx docker-compose
+  done 'install docker'
+}
+
 # install LSP & formatter
 if (is_done 'install LSP & formatter') == false {
   big_text 'install LSP & formatter'
   npm i -g vscode-langservers-extracted
   npm install -g dockerfile-language-server-nodejs
+  npm install -g @microsoft/compose-language-service
   npm i -g @tailwindcss/language-server
   npm i -g bash-language-server
   npm install -g typescript typescript-language-server

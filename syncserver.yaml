@@ -1,0 +1,27 @@
+name: syncserver
+
+services:
+  syncthing:
+      image: syncthing/syncthing
+      container_name: syncthing
+      hostname: my-syncthing
+      environment:
+        - PUID=1000
+        - PGID=1000
+      volumes:
+        - ${HOME}/st-sync:/var/syncthing
+      network_mode: host
+      restart: unless-stopped
+      healthcheck:
+        test: curl -fkLsS -m 2 127.0.0.1:8384/rest/noauth/health | grep -o --color=never OK || exit 1
+        interval: 1m
+        timeout: 10s
+        retries: 3
+  anki_syncserver:
+    restart: unless-stopped
+    network_mode: host
+    build:
+      args:
+        - ANKI_VERSION=25.07.5
+      env_file: ./.env
+      dockerfile: Dockerfile.anki_syncserver
