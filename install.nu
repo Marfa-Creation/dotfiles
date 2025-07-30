@@ -16,7 +16,7 @@ def big_text [text: string] {
 } 
 
 # initial installation
-run [sudo pacman -Syu curl wget desktop-file-utils base-devel figlet] "initial installation"
+sudo pacman -Syu curl wget desktop-file-utils base-devel figlet
 
 # install rust
 if (is_done 'install rust') == false {
