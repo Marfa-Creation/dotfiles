@@ -20,8 +20,8 @@ services:
   anki_syncserver:
     restart: unless-stopped
     network_mode: host
+    env_file: .env
     build:
       args:
         - ANKI_VERSION=25.07.5
-      env_file: ./.env
       dockerfile: Dockerfile.anki_syncserver
