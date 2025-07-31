@@ -12,7 +12,7 @@ def done [name: string] {
 }
 
 def big_text [text: string] {
-  print $"(ansi greenyellow)(/usr/bin/figlet $text)(ansi reset)"
+  print $"(ansi greenyellow)(/usr/bin/figlet -t $text)(ansi reset)"
 } 
 
 # initial installation
