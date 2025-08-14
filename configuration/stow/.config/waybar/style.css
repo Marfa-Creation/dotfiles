@@ -24,14 +24,19 @@ window#waybar {
 /* === Workspaces === */
 #workspaces button {
   padding: 0 10px;
-  color: @base_fg;
+  color: @blue;
   background: transparent;
   border: none;
 }
-
-#workspaces button.focused {
+#workspaces button:hover {
   color: @blue;
-  border-bottom: 2px solid @blue;
+  background: transparent;
+  box-shadow: none;
+  border: solid @blue 1px;
+}
+#workspaces button.active {
+  color: @white;
+  border-radius: 0px;
 }
 
 #workspaces button.urgent {

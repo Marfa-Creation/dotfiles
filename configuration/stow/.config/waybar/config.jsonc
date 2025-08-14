@@ -8,11 +8,13 @@
   "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
   "modules-left": [
+    "hyprland/workspaces",
     "sway/workspaces",
     "sway/mode",
     "sway/scratchpad",
     "custom/media",
-    "sway/window"
+    "sway/window",
+    "hyprland/window"
   ],
   // "modules-center": [
   //   "sway/window"
@@ -251,7 +253,7 @@
   "custom/power": {
     "format": "⏻ ",
     // "tooltip": false,
-    "on-click": "~/.config/waybar/power_menu.sh"
+    "on-click": "~/.config/waybar/power_menu.nu"
     // "menu": "on-click",
     // "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
     // "menu-actions": {

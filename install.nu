@@ -295,6 +295,6 @@ if (is_done 'install sway utils') == false {
 # install hyprland utils
 if (is_done 'install hyprland utils') == false {
   big_text 'install hyprland utils'
-  sudo pacman -S xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland hyprpaper
+  sudo pacman -S xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland hyprland hyprshot hypridle hyprlock hyprpaper hyprsunset
   done 'install hyprland utils'
 }
