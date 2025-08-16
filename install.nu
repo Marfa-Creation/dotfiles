@@ -108,7 +108,7 @@ if (is_done 'install clipboard manager') == false {
 # install docker
 if (is_done 'install docker') == false {
   big_text 'install docker'
-  sudo pacman -S docker-buildx docker-compose
+  sudo pacman -S docker docker-buildx docker-compose
   done 'install docker'
 }
 
@@ -162,6 +162,7 @@ if (is_done 'install appimagelauncher') == false {
 if (is_done 'install zoxide') == false {
   big_text 'install zoxide'
   sudo pacman -S zoxide
+  zoxide init nushell
   done 'install zoxide'
 }
 
@@ -196,7 +197,7 @@ if (is_done 'install VPN') == false {
 # install font
 if (is_done 'install font') == false {
   big_text 'install font'
-  sudo pacman -S ttf-jetbrains-mono-nerd noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-font-awesome
+  sudo pacman -S ttf-jetbrains-mono-nerd noto-fonts noto-fonts-cjk noto-fonts-emoji otf-font-awesome
   done 'install font'
 }
 
@@ -257,7 +258,7 @@ if (is_done 'install system monitor') == false {
 if (is_done 'install document utils') == false {
   big_text 'install document utils'
   yay -S onlyoffice-bin logseq-desktop-bin
-  sudo pacman -S okular
+  sudo pacman -S okular libreoffice-still
   done 'install document utils'
 }
 
@@ -288,7 +289,7 @@ if (is_done 'install sway utils') == false {
   yay -S swaylock-effects light
   sudo usermod -aG video (^whoami)
   light -N 5
-  sudo pacman -S sway swaybg swayidle rofi-wayland rofi-calc waybar
+  sudo pacman -S sway swaybg swayidle rofi-wayland rofi-calc waybar inotify-tools
   done 'install sway utils'
 }
 
