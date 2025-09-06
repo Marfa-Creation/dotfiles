@@ -272,7 +272,7 @@ if (is_done 'install multimedia utils') == false {
 # install audio utils
 if (is_done 'install audio utils') == false {
   big_text 'install audio utils'
-  sudo pacman -S pipewire pipewire-pulse wireplumber pavucontrol
+  sudo pacman -S pipewire pipewire-pulse wireplumber pavucontrol termusic
   done 'install audio utils'
 }
 
@@ -298,4 +298,11 @@ if (is_done 'install hyprland utils') == false {
   big_text 'install hyprland utils'
   sudo pacman -S xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland hyprland hyprshot hypridle hyprlock hyprpaper hyprsunset
   done 'install hyprland utils'
+}
+
+# install manual
+if (is_done 'install manual') == false {
+  big_text 'install manual'
+  sudo pacman -S man-db tldr
+  done 'install manual'
 }
