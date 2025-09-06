@@ -80,6 +80,7 @@ $env.ANKI_WAYLAND = 1
 $env.MOZ_ENABLE_WAYLAND = 1
 $env.ELECTRON_FLAGS = "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3"
 $env.QT_IM_MODULE = "fcitx"
+$env.GTK_IM_MODULE = "wayland"
 $env.PAGER = "/usr/bin/bat"
 $env.MANPAGER = "sh -c 'sed -u -e \"s/\\x1B\\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
 
