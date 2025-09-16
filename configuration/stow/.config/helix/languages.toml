@@ -1,6 +1,12 @@
-[language-server.tailwindcss]
+[language-server.tailwindcss-ls]
 command = "tailwindcss-language-server"
-config = { userLanguages = { rust = "html", "*.rs" = "html" } }
+config = { userLanguages = { rust = "html", "*.rs" = "html" }, tailwindCSS = {experimental = { classRegex = [
+  "class\\s*:\\s*\"([^\"}]*)",
+  "class=\"([^\"]*)",
+  "class={\"([^\"}]*)",
+  "class=format!\\({\"([^\"}]*)",
+  "class: \"(.*)\"",
+] }} }
 args = ["--stdio"]
 
 [language-server.asm-lsp]
@@ -14,7 +20,7 @@ indent = { tab-width = 2, unit = "  " }
 
 [[language]]
 name = "rust"
-language-servers = ["rust-analyzer", "tailwindcss"]
+language-servers = ["rust-analyzer", "tailwindcss-ls"]
 auto-format = false
 
 [language-server.rust-analyzer]
