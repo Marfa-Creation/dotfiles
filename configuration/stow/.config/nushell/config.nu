@@ -94,6 +94,7 @@ $env.PATH = [
   "~/.local/bin"
 	"~/.cargo/bin"
 	"~/.npm-global/bin"
+	"~/develop/flutter/bin"
 ]
 
 # theming
