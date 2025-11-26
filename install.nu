@@ -126,6 +126,7 @@ if (is_done 'install LSP & formatter') == false {
   npm i -g sql-language-server
   cargo install taplo-cli --features lsp
   sudo pacman -S shfmt
+  yay -S lemminx
   rustup component add rust-analyzer
   done 'install LSP & formatter'
 }
