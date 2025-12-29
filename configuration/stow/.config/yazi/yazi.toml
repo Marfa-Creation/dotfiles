@@ -29,6 +29,8 @@ play = [
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
 ]
 
+open-pdf = [{ run = "okular $1", desc = "Open", for = "linux" }]
+
 [open]
 rules = [
   # Folder
@@ -36,6 +38,9 @@ rules = [
     "edit",
     "open",
     "reveal",
+  ] },
+  { mime = "application/pdf", use = [
+    "open-pdf",
   ] },
   # Text
   { mime = "text/*", use = [
