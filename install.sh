@@ -67,7 +67,7 @@ npm i -g @vue/language-server
 npm i -g prettier
 npm i -g sql-language-server
 cargo install taplo-cli --features lsp
-sudo pacman -S shfmt
+sudo pacman -S shfmt texlab
 
 
 # install alacritty terminal
