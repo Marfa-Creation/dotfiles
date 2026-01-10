@@ -21,6 +21,22 @@
 alias logseq = logseq --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3
 
 # function
+def teximg [file: string] {
+	pdflatex $file
+
+	let last = ($file | str length) - 5
+
+	let ext = $"(($file) | str substring ($last + 1)..($file | str length))"
+	let cleared = $"(($file) | str substring 0..($last))"
+
+	if ($ext != ".tex") {
+		print "File must end with '.tex'"
+		return 1;
+	}
+
+
+	magick -density 600 $"($cleared).pdf" $"($cleared).jpg"
+}
 
 def math [] {
 	job spawn {brave}
