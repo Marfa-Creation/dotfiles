@@ -227,10 +227,10 @@ if (is_done 'install file manager') == false {
   done 'install file manager'
 }
 
-# install pomodoro timer
+# install superproductivity
 if (is_done 'install pomodoro timer') == false {
   big_text 'install pomodoro timer'
-  yay -S gnome-shell-pomodoro
+  yay -S superproductivity-bin
   done 'install pomodoro timer'
 }
 
