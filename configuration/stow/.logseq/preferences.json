@@ -1,0 +1,14 @@
+{
+  "theme": null,
+  "themes": {
+    "mode": "light",
+    "light": null,
+    "dark": null
+  },
+  "externals": [
+    "/home/marfa/Downloads/logseq-msk-toc_0.0.1"
+  ],
+  "pinnedToolbarItems": [
+    "logseq-heatmap:heatmap-plugin-open"
+  ]
+}

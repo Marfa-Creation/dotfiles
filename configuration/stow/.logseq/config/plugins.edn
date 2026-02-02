@@ -1,0 +1,6 @@
+{:logseq-mark-map {:version "v0.4.6", :repo "vipzhicheng/logseq-plugin-mark-map", :effect false, :theme false}
+ :logseq-todo-exploder {:version "1.0.3", :repo "sawhney17/logseq-todo-exploder", :effect true, :theme false}
+ :logseq-toc-plugin {:version "v2.0.3", :repo "benjypng/logseq-toc-plugin", :effect true, :theme false}
+ :logseq-heatmap {:version "v2.4.3", :repo "pengx17/logseq-plugin-heatmap", :effect true, :theme false}
+ :logseq-pdf-export-plugin {:version "2.2.11", :repo "sawhney17/logseq-pdf-export", :effect true, :theme false}
+ :logseq-bullet-threading {:version "v1.1.4", :repo "pengx17/logseq-plugin-bullet-threading", :effect false, :theme false}}
