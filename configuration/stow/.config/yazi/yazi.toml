@@ -83,26 +83,50 @@ rules = [
   ] },
 ]
 
-[plugin]
-preloaders = [
+# [plugin]
+# preloaders = [
+#   # Do not preload files in mounted locations:
+#   # Environment variable won't work here.
+#   # Using absolute path instead.
+#   { name = "/run/user/1000/gvfs/**/*", run = "noop" },
+
+#   # For mounted location for hard disk/drive
+#   { name = "/run/media/USER_NAME/**/*", run = "noop" },
+#   #... the rest of preloaders
+# ]
+# previewers = [
+#   # Allow to preview folder.
+#   { name = "*/", run = "folder", sync = true },
+#   # Do not previewing files in mounted locations (uncomment to except text file):
+#   # { mime = "{text/*,application/x-subrip}", run = "code" },
+#   # Using absolute path.
+#   { name = "/run/user/1000/gvfs/**/*", run = "noop" },
+
+#   # For mounted hard disk.
+#   { name = "/run/media/USER_NAME/**/*", run = "noop" },
+#   #... the rest of previewers
+# ]
+
+prepend_preloaders = [
   # Do not preload files in mounted locations:
   # Environment variable won't work here.
   # Using absolute path instead.
-  { name = "/run/user/1000/gvfs/**/*", run = "noop" },
+  { url = "/run/user/1000/gvfs/**/*", run = "noop" },
 
-  # For mounted location for hard disk/drive
-  { name = "/run/media/USER_NAME/**/*", run = "noop" },
-  #... the rest of preloaders
+  # For mounted hard disk/drive
+  { url = "/run/media/USER_NAME/**/*", run = "noop" },
 ]
-previewers = [
+prepend_previewers = [
   # Allow to preview folder.
-  { name = "*/", run = "folder", sync = true },
-  # Do not previewing files in mounted locations (uncomment to except text file):
-  # { mime = "{text/*,application/x-subrip}", run = "code" },
-  # Using absolute path.
-  { name = "/run/user/1000/gvfs/**/*", run = "noop" },
+  { url = "*/", run = "folder" },
 
-  # For mounted hard disk.
-  { name = "/run/media/USER_NAME/**/*", run = "noop" },
-  #... the rest of previewers
+  # Do not previewing files in mounted locations.
+  # Uncomment the line below to allow previewing text files.
+  # { mime = "{text/*,application/x-subrip}", run = "code" },
+
+  # Using absolute path.
+  { url = "/run/user/1000/gvfs/**/*", run = "noop" },
+
+  # For mounted hard disk/drive.
+  { url = "/run/media/USER_NAME/**/*", run = "noop" },
 ]
