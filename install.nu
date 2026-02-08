@@ -219,7 +219,7 @@ if (is_done 'install QT & GTK config tool') == false {
 # install file manager
 if (is_done 'install file manager') == false {
   big_text 'install file manager'
-  sudo pacman -S yazi nemo
+  sudo pacman -S yazi nemo fzf
   ya pkg add boydaihungst/gvfs
   sudo pacman -S gvfs glib2
   sudo pacman -S gvfs-mtp gvfs-afc gvfs-google gvfs-gphoto2 gvfs-nfs gvfs-smb gvfs-afc gvfs-dnssd gvfs-goa gvfs-onedrive gvfs-wsdd
