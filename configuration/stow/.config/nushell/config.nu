@@ -91,6 +91,7 @@ open /etc/locale.conf
 | load-env
 
 # configuration variable
+$env.EDITOR = "helix"
 $env.ELECTRON_OZONE_PLATFORM_HINT = "auto"
 $env.ANKI_WAYLAND = 1
 $env.MOZ_ENABLE_WAYLAND = 1
