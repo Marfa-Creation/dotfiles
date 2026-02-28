@@ -266,7 +266,7 @@ if (is_done 'install document utils') == false {
 # install multimedia utils
 if (is_done 'install multimedia utils') == false {
   big_text 'install multimedia utils'
-  sudo pacman -S eog mpv vvave
+  sudo pacman -S eog mpv vvave gthumb
   done 'install multimedia utils'
 }
 
