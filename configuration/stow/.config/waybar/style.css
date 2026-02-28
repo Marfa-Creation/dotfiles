@@ -9,7 +9,13 @@
 @define-color orange #ff9e64;
 @define-color green #9ece6a;
 
-/* === Waybar Global === */
+tooltip {
+    background-color: #24283b;
+    color: #f7f7f7;
+    border-radius: 8px;
+    border: 1px solid #7aa2f7;
+    padding: 6px;
+}/* === Waybar Global === */
 * {
   font-family: "JetBrainsMonoNLNerdFont", sans-serif;
   font-size: 14px;
