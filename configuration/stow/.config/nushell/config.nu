@@ -19,6 +19,7 @@
 
 # alias
 alias logseq = logseq --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3
+alias man-toc = ^rg --color never "^(   )?[^ ]"
 
 # function
 def teximg [file: string] {
