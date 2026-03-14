@@ -241,6 +241,13 @@ if (is_done 'install screen capture program') == false {
   done 'install screen capture program'
 }
 
+# install OCR program
+if (is_done 'install OCR program') == false {
+  big_text 'install OCR program'
+  yay -S quicksnip-git
+  done 'install OCR program'
+}
+
 # install fastfetch
 if (is_done 'install fastfetch') == false {
   big_text 'install fastfetch'
