@@ -19,9 +19,20 @@
 
 # alias
 alias logseq = logseq --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3
-alias man-toc = ^rg --color never "^(   )?[^ ]"
 
 # function
+def man-toc [] {
+    let input = $in
+
+    if ($input | is-empty) {
+        error make {
+          msg: "rgp must be used with piped input"
+        }
+    }
+
+    $input | ^rg --color never "^(   )?[^ ]"
+}
+
 def teximg [file: string] {
 	pdflatex $file
 
@@ -104,13 +115,13 @@ $env.MANPAGER = "sh -c 'sed -u -e \"s/\\x1B\\[[0-9;]*m//g; s/.\\x08//g\" | bat -
 
 # PATH
 $env.PATH = [
+	"~/.cargo/bin"
   "/usr/local/bin"
   "/usr/bin"
   "/bin"
   "/usr/sbin"
   "/sbin"
   "~/.local/bin"
-	"~/.cargo/bin"
 	"~/.npm-global/bin"
 	"~/develop/flutter/bin"
 ]
