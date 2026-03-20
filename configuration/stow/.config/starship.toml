@@ -76,4 +76,3 @@ format = '[[($all_status$ahead_behind )](fg:#c0caf5 bg:#414868)]($style)'
 symbol = ""
 style = "bg:#24283b"
 format = '[[ $symbol ($version) ](fg:#c0caf5 bg:#24283b)]($style)'
- 

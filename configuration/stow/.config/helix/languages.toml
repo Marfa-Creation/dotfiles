@@ -13,6 +13,11 @@ args = ["--stdio"]
 command = "asm-lsp"
 
 [[language]]
+name = "clojure"
+formatter = { command = "zprint" }
+auto-format = false
+
+[[language]]
 name = "nasm"
 scope = "source.asm"
 file-types = ["asm"]
