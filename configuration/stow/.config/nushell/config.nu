@@ -106,6 +106,7 @@ open /etc/locale.conf
 $env.EDITOR = "helix"
 $env.ELECTRON_OZONE_PLATFORM_HINT = "auto"
 $env.ANKI_WAYLAND = 1
+$env.WEBKIT_DISABLE_DMABUF_RENDERER = 1
 $env.MOZ_ENABLE_WAYLAND = 1
 $env.ELECTRON_FLAGS = "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3"
 $env.QT_IM_MODULE = "fcitx"
