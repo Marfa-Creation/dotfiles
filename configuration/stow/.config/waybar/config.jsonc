@@ -255,7 +255,7 @@
   },
   "custom/power": {
     "format": "⏻ ",
-    // "tooltip": false,
+    "tooltip": false,
     "on-click": "~/.config/waybar/power_menu.nu"
     // "menu": "on-click",
     // "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
