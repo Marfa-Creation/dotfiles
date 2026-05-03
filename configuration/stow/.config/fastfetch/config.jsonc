@@ -43,7 +43,8 @@
     },
     {
       "type": "shell",
-      "key": "{##F7768E} Shell        "
+      "key": "{##F7768E} Shell        ",
+      "format": "{pretty-name} {version} (PID: {pid})"
     },
     {
       "type": "terminal",
