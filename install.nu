@@ -120,6 +120,7 @@ if (is_done 'install LSP & formatter') == false {
   npm install -g @microsoft/compose-language-service
   npm i -g @tailwindcss/language-server
   npm i -g bash-language-server
+  sudo pacman -S yamlfmt
   npm install -g typescript typescript-language-server
   npm i -g @vue/language-server
   npm i -g prettier
