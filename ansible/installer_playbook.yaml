@@ -1,0 +1,243 @@
+# Installation
+# Pacman
+# AUR
+# NPM
+# Cargo and Rustup
+# Shell
+# Configuration
+# Shell
+---
+- name: System Installation Playbook
+  hosts: localhost
+  gather_facts: true
+  tasks:
+    # ==================================
+    # ========== Installation ==========
+    # ==================================
+
+    # ========== Pacman ==========
+    - name: Update system
+      become: true
+      community.general.pacman:
+        update_cache: true
+        state: present
+        upgrade: true
+    - name: install pacman packages
+      become: true
+      community.general.pacman:
+        update_cache: true
+        state: present
+        name:
+          # initial installation
+          - curl
+          - wget
+          - desktop-file-utils
+          - base-devel
+          - figlet
+          # install git
+          - git
+          # install npm
+          - npm
+          - unzip
+          # install bun
+          - bun
+          # install browser
+          - firefox-developer-edition
+          # install helix
+          - helix
+          # install syncthing
+          - syncthing
+          # install clipboard manager
+          - wl-clipboard
+          # install docker
+          - docker
+          - docker-buildx
+          - docker-compose
+          # install terminal
+          - kitty
+          - picom
+          # install starship
+          - starship
+          # install zoxide
+          - zoxide
+          # install bat
+          - bat
+          # install ripgrep
+          - ripgrep
+          # install dunst
+          - dunst
+          # install VPN
+          - openvpn
+          - wireguard-tools
+          - systemd-resolvconf
+          - proton-vpn-gtk-app
+          # install font
+          - ttf-jetbrains-mono-nerd
+          - noto-fonts
+          - noto-fonts-cjk
+          - noto-fonts-emoji
+          - otf-font-awesome
+          # install input method program
+          - fcitx5-im
+          - fcitx5-anthy
+          - fcitx5-configtool
+          - wev
+          # install QT & GTK config tool
+          - qt5ct
+          - qt6ct
+          - nwg-look
+          # install file manager
+          - yazi
+          - nemo
+          - fzf
+          - gvfs
+          - glib2
+          - gvfs-mtp
+          - gvfs-afc
+          - gvfs-gphoto2
+          - gvfs-nfs
+          - gvfs-smb
+          - gvfs-dnssd
+          - gvfs-goa
+          - gvfs-onedrive
+          - gvfs-wsdd
+          # install screen capture program
+          - grim
+          - wf-recorder
+          - slurp
+          # install fastfetch
+          - fastfetch
+          - imagemagick
+          # install system monitor
+          - btop
+          # install document utils
+          - okular
+          - libreoffice-still
+          # install multimedia utils
+          - eog
+          - mpv
+          - vvave
+          - gthumb
+          # install audio utils
+          - pipewire
+          - pipewire-pulse
+          - wireplumber
+          - pavucontrol
+          - termusic
+          # install network utils
+          - networkmanager
+          # install sway utils
+          - sway
+          - swaybg
+          - swayidle
+          - rofi-wayland
+          - rofi-calc
+          - waybar
+          - inotify-tools
+          # install hyprland utils
+          - xdg-desktop-portal-hyprland
+          - hyprpolkitagent
+          - qt5-wayland
+          - qt6-wayland
+          - hyprland
+          - hyprshot
+          - hypridle
+          - hyprlock
+          - hyprpaper
+          - hyprsunset
+          # install manual
+          - man-db
+          - tldr
+          # install LSP & formatter
+          - yamlfmt
+          - shfmt
+          - taplo-cli
+    # ========== AUR ==========
+    - name: Install yay AUR helper
+      kewlfft.aur.aur:
+        name: yay-bin
+        state: present
+        use: makepkg
+    - name: Install AUR packages via yay
+      kewlfft.aur.aur:
+        name:
+          # install tablet driver
+          - opentabletdriver
+          # install pacman-static
+          - pacman-static
+          # install browser
+          - zen-browser-bin
+          - brave-bin
+          # install anki
+          - anki-bin
+          # install appimagelauncher
+          - appimagelauncher
+          # install sway utils
+          - swaylock-effects
+          - light
+          # install LSP & formatter
+          - lemminx
+          - zprint-bin
+          # install OCR program
+          - quicksnip-git
+          # install superproductivity
+          - superproductivity-bin
+          # install document utils
+          - onlyoffice-bin
+          - logseq-desktop-bin
+          # install file manager
+          - simple-mtpfs
+        state: present
+        use: yay
+    # ========== NPM ==========
+    # configure NPM
+    - name: Configure npm prefix
+      ansible.builtin.shell:
+        cmd: npm config set prefix ~/.npm-global
+    - name: Install NPM packages globally
+      community.general.npm:
+        name: "{{ item }}"
+        global: true
+        state: present
+      loop:
+        # install LSP & formatter
+        - vscode-langservers-extracted
+        - dockerfile-language-server-nodejs
+        - "@microsoft/compose-language-service"
+        - "@tailwindcss/language-server"
+        - bash-language-server
+        - typescript
+        - typescript-language-server
+        - "@vue/language-server"
+        - prettier
+        - sql-language-server
+    # ========== Shell ==========
+    # install rust
+    - name: Install Rust
+      ansible.builtin.shell:
+        cmd: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+        creates: "{{ ansible_facts['env']['HOME'] }}/.cargo/bin/rustc"
+    # ========== Cargo and Rustup ==========
+    # install LSP & formatter
+    - name: Add rust-analyzer component
+      ansible.builtin.shell:
+        cmd: "{{ ansible_facts['env']['HOME'] }}/.cargo/bin/rustup component add rust-analyzer"
+    # ===================================
+    # ========== Configuration ==========
+    # ===================================
+    # install sway utils
+    - name: Add user to video group
+      become: true
+      ansible.builtin.user:
+        name: "{{ ansible_facts['user_id'] }}"
+        groups: video
+        shell: /usr/bin/nu
+        append: true
+    # others
+    - name: Set light backlight and initialize tools
+      ansible.builtin.shell:
+        cmd: |
+          light -N 5
+          zoxide init nushell | save -f ~/.zoxide.nu
+          ya pkg add boydaihungst/gvfs
+      ignore_errors: false
