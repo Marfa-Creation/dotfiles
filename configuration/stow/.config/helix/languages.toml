@@ -33,7 +33,7 @@ config = { cargo = { allFeatures = true } }
 
 [[language]]
 name = "bash"
-formatter = { command = "shfmt", args = ["--write"] }
+formatter = { command = "shfmt", args = ["-"] }
 
 [language-server.sql-language-server]
 command = "sql-language-server"
@@ -70,6 +70,12 @@ languages = ["vue"]
 name = "toml"
 auto-format = false
 formatter = { command = "taplo", args = ["fmt", "-"] }
+
+[[language]]
+name = "yaml"
+auto-format = false
+formatter = { command = "yamlfmt", args = ["-"] }
+indent = { tab-width = 2, unit = "  " }
 
 [language-server.kotlin-language-server]
 command = "kotlin-language-server"
