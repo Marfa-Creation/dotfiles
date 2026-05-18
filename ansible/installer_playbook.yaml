@@ -1,11 +1,12 @@
 # Installation
-# Pacman
-# AUR
-# NPM
-# Cargo and Rustup
-# Shell
+# - Pacman
+# - AUR
+# - NPM
+# - Shell
+# - Cargo and Rustup
 # Configuration
-# Shell
+# - Systemd
+# - Shell
 ---
 - name: System Installation Playbook
   hosts: localhost
@@ -101,6 +102,7 @@
           - gvfs-goa
           - gvfs-onedrive
           - gvfs-wsdd
+          - xdg-user-dirs
           # install screen capture program
           - grim
           - wf-recorder
@@ -147,6 +149,7 @@
           - hyprsunset
           # install manual
           - man-db
+          - man-pages
           - tldr
           # install LSP & formatter
           - yamlfmt
@@ -222,9 +225,27 @@
     - name: Add rust-analyzer component
       ansible.builtin.shell:
         cmd: "{{ ansible_facts['env']['HOME'] }}/.cargo/bin/rustup component add rust-analyzer"
+    # ========== Systemd ==========
+    - name: Start and enable systemd services as user service
+      ansible.builtin.systemd_service:
+        scope: user
+        name: "{{ item }}"
+      loop:
+        - syncthing.service
+        - pipewire.service
+        - pipewire-pulse.service
+        - wireplumber.service
+    - name: Start and enable systemd services as system service
+      ansible.builtin.systemd_service:
+        scope: system
+        name: "{{ item }}"
+      loop:
+        - dockerd.socket
+        - NetworkManager.service
     # ===================================
     # ========== Configuration ==========
     # ===================================
+    # ========== Shell ==========
     # install sway utils
     - name: Add user to video group
       become: true
@@ -237,6 +258,7 @@
     - name: Set light backlight and initialize tools
       ansible.builtin.shell:
         cmd: |
+          xdg-user-dirs-update
           light -N 5
           zoxide init nushell | save -f ~/.zoxide.nu
           ya pkg add boydaihungst/gvfs
