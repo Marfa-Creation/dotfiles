@@ -6,6 +6,7 @@
 # - Cargo and Rustup
 # Configuration
 # - Systemd
+# - Dconf
 # - Shell
 ---
 - name: System Installation Playbook
@@ -37,6 +38,7 @@
           - figlet
           # install git
           - git
+          - git-delta
           # install npm
           - npm
           - unzip
@@ -112,9 +114,12 @@
           - imagemagick
           # install system monitor
           - btop
+          - bottom
+          - systemctl-tui
           # install document utils
           - okular
           - libreoffice-still
+          - readest
           # install multimedia utils
           - eog
           - mpv
@@ -225,6 +230,17 @@
     - name: Add rust-analyzer component
       ansible.builtin.shell:
         cmd: "{{ ansible_facts['env']['HOME'] }}/.cargo/bin/rustup component add rust-analyzer"
+    - name: Install program from cargo without additional feature
+      community.general.cargo:
+        executable: "{{ ansible_facts['env']['HOME'] }}/.cargo/bin/cargo"
+        state: present
+        path: "{{ ansible_facts['env']['HOME']}}/.cargo/bin"
+        name:
+          # install bookmark manager
+          - bmm
+    # ===================================
+    # ========== Configuration ==========
+    # ===================================
     # ========== Systemd ==========
     - name: Start and enable systemd services as user service
       ansible.builtin.systemd_service:
@@ -242,9 +258,12 @@
       loop:
         - dockerd.socket
         - NetworkManager.service
-    # ===================================
-    # ========== Configuration ==========
-    # ===================================
+    # Hide window button from GTK window
+    - name: Configure dconf settings
+      community.general.dconf:
+        key: "/org/gnome/desktop/wm/preferences/button-layout"
+        value: ":"
+        state: present
     # ========== Shell ==========
     # install sway utils
     - name: Add user to video group
