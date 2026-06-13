@@ -131,6 +131,7 @@
           - wireplumber
           - pavucontrol
           - termusic
+          - easyeffects
           # install network utils
           - networkmanager
           # install sway utils
@@ -151,6 +152,7 @@
           - hypridle
           - hyprlock
           - hyprpaper
+          - hyprshutdown
           - hyprsunset
           # install manual
           - man-db
@@ -160,6 +162,9 @@
           - yamlfmt
           - shfmt
           - taplo-cli
+          - ty
+          - jedi-language-server
+          - python-lsp-server
     # ========== AUR ==========
     - name: Install yay AUR helper
       kewlfft.aur.aur:
@@ -238,6 +243,10 @@
         name:
           # install bookmark manager
           - bmm
+          # install LSP & formatter
+          - emmylua_ls
+          - emmylua_check
+          - emmylua_doc_cli
     # ===================================
     # ========== Configuration ==========
     # ===================================
