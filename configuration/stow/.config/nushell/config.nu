@@ -20,7 +20,6 @@
 # alias
 alias logseq = logseq --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3
 
-# function
 def man-toc [] {
     let input = $in
 
@@ -82,6 +81,10 @@ def --wrapped helix [...args] {
 def hx --wrapped [...args] {
 	helix ...$args
 }
+def bmm --wrapped [...args] {
+	^bmm ...$args
+	^sqlite3_rsync ~/.local/share/bmm/bmm.db ~/Documents/bmm-replica.db
+}
 
 def --env y [...args] {
 	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
@@ -116,15 +119,16 @@ $env.MANPAGER = "sh -c 'sed -u -e \"s/\\x1B\\[[0-9;]*m//g; s/.\\x08//g\" | bat -
 
 # PATH
 $env.PATH = [
-	"~/.cargo/bin"
+	$"($env.HOME)/.cargo/bin"
   "/usr/local/bin"
   "/usr/bin"
   "/bin"
   "/usr/sbin"
   "/sbin"
-  "~/.local/bin"
-	"~/.npm-global/bin"
-	"~/develop/flutter/bin"
+	"/usr/lib/qt6/bin/" # for qmlls
+  $"($env.HOME)/.local/bin"
+	$"($env.HOME)/.npm-global/bin"
+	$"($env.HOME)/develop/flutter/bin"
 ]
 
 # theming
