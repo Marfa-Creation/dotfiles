@@ -1,0 +1,30 @@
+[icon]
+prepend_dirs = [
+  { name = "Desktop", text = "󰍹", fg = "#7aa2f7" },
+  { name = "Documents", text = "󱉟", fg = "#7aa2f7" },
+  { name = "Books", text = "", fg = "#7aa2f7" },
+  { name = "Study", text = "󰗚", fg = "#7aa2f7" },
+  { name = "Downloads", text = "", fg = "#7aa2f7" },
+  { name = "Games", text = "", fg = "#7aa2f7" },
+  { name = "Music", text = "", fg = "#7aa2f7" },
+  { name = "Pictures", text = "", fg = "#7aa2f7" },
+  { name = "Photos", text = "", fg = "#7aa2f7" },
+  { name = "Screenshots", text = "󰹑", fg = "#7aa2f7" },
+  { name = "Wallpapers", text = "󰸉", fg = "#7aa2f7" },
+  { name = "Programming", text = "󰘦", fg = "#7aa2f7" },
+  { name = "Code", text = "", fg = "#7aa2f7" },
+  { name = "Public", text = "󰀑", fg = "#7aa2f7" },
+  { name = "Source", text = "󰘬", fg = "#7aa2f7" },
+  { name = "Shares", text = "", fg = "#7aa2f7" },
+  { name = "Templates", text = "", fg = "#7aa2f7" },
+  { name = "Utility", text = "", fg = "#7aa2f7" },
+  { name = "Tools", text = "", fg = "#7aa2f7" },
+  { name = "Vault", text = "", fg = "#7aa2f7" },
+  { name = "Videos", text = "", fg = "#7aa2f7" },
+  { name = "Workspaces", text = "󰍺", fg = "#7aa2f7" },
+  { name = "Dashboard", text = "", fg = "#7aa2f7" },
+  { name = "Cloud", text = "󰅟", fg = "#7aa2f7" },
+  { name = ".git", text = "", fg = "#7aa2f7" },
+]
+
+prepend_conds = [{ if = "dir", text = "", fg = "#7aa2f7" }]
