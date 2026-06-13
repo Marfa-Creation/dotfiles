@@ -1,0 +1,8 @@
+#!/usr/bin/nu
+
+
+hyprctl activewindow -j | from json | if $in.workspace.name == "special:special" {
+  ^hyprctl dispatch $"hl.dsp.window.move\({ workspace = (hyprctl activeworkspace -j | from json | $in.id), follow = false }\)" | from json;
+} else {
+  ^hyprctl dispatch $"hl.dsp.window.move\({ workspace = "special:special", follow = false }\)" | from json;
+}
