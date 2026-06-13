@@ -37,7 +37,7 @@ open-sqlite3 = [{ run = 'sqlite3 "$1"', block = true, desc = "Open", for = "linu
 [open]
 rules = [
   # Folder
-  { name = "*/", use = [
+  { mime = "folder/local", use = [
     "edit",
     "open",
     "reveal",
@@ -84,7 +84,7 @@ rules = [
     "reveal",
   ] },
   # Fallback
-  { name = "*", use = [
+  { mime = "*", use = [
     "open",
     "reveal",
   ] },
