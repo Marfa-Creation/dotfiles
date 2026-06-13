@@ -104,3 +104,13 @@ language-servers = [ "xml" ]
 
 [language-server.xml]
 command = "lemminx"
+
+[language-server.emmylua]
+command = "emmylua_ls"
+[[language]]
+name = "lua"
+language-servers = ["emmylua"]
+
+# [language-server.qmlls]
+# args = ["-E"]
+# command = "qmlls"
