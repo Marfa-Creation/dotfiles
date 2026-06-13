@@ -99,3 +99,8 @@ window#waybar {
   background-color: @red;
   color: @white;
 }
+
+#submap {
+    color: @cyan;
+    font-weight: bold;
+}

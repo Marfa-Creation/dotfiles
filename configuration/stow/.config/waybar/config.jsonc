@@ -9,6 +9,7 @@
   // Choose the order of the modules
   "modules-left": [
     "hyprland/workspaces",
+    "hyprland/submap",
     "sway/workspaces",
     "sway/mode",
     "sway/scratchpad",
@@ -40,6 +41,9 @@
   ],
   "hyprland/workspaces": {
     "active-only": true
+  },
+  "hyprland/submap": {
+    "format": "{} "  
   },
   // Modules configuration
   // "sway/workspaces": {
