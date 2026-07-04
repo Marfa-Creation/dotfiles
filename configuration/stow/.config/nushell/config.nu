@@ -128,6 +128,7 @@ $env.PATH = [
 	"/usr/lib/qt6/bin/" # for qmlls
   $"($env.HOME)/.local/bin"
 	$"($env.HOME)/.npm-global/bin"
+	$"($env.HOME)/.bun/bin"
 	$"($env.HOME)/develop/flutter/bin"
 ]
 
