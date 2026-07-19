@@ -70,6 +70,15 @@ includeInlayPropertyDeclarationTypeHints = true
 includeInlayFunctionLikeReturnTypeHints = true
 includeInlayEnumMemberValueHints = true
 
+[language-server.typescript-language-server.config.javascript.inlayHints]
+includeInlayParameterNameHints = "all"
+includeInlayFunctionParameterTypeHints = true
+includeInlayVariableTypeHints = true
+includeInlayVariableTypeHintsWhenTypeMatchesName = true
+includeInlayPropertyDeclarationTypeHints = true
+includeInlayFunctionLikeReturnTypeHints = true
+includeInlayEnumMemberValueHints = true
+
 [[language-server.typescript-language-server.config.plugins]]
 name = "@vue/typescript-plugin"
 location = "/home/marfa/.npm-global/lib/node_modules/@vue/language-server/"
