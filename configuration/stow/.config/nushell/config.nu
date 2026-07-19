@@ -20,6 +20,12 @@
 # alias
 alias logseq = logseq --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --wayland-text-input-version=3
 
+def --env use-venv [path?: string] {
+    let bin = ($path | default ".venv" | path join "bin")
+		print $bin
+    $env.PATH = ($env.PATH | prepend $bin)
+}
+
 def man-toc [] {
     let input = $in
 
