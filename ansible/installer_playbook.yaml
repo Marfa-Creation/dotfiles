@@ -241,8 +241,6 @@
         state: present
         path: "{{ ansible_facts['env']['HOME']}}/.cargo/bin"
         name:
-          # install bookmark manager
-          - bmm
           # install LSP & formatter
           - emmylua_ls
           - emmylua_check

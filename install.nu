@@ -1,317 +1,160 @@
 #!/bin/nu
 
-touch ./log
-let log: string = open ./log | str trim;
+(sudo pacman -Syu --needed
+    # initial installation
+    curl wget desktop-file-utils base-devel figlet
+    # install git
+    git git-delta
+    # install npm
+    npm
+    unzip
+    # install bun
+    bun
+    # install browser
+    firefox-developer-edition
+    # install helix
+    helix
+    # install syncthing
+    syncthing
+    # install clipboard manager
+    wl-clipboard
+    # install docker
+    docker docker-buildx docker-compose
+    # install terminal
+    kitty
+    picom
+    # install starship
+    starship
+    # install zoxide
+    zoxide
+    # install bat
+    bat
+    # install ripgrep
+    ripgrep
+    # install dunst
+    dunst
+    # install VPN
+    openvpn wireguard-tools systemd-resolvconf proton-vpn-gtk-app
+    # install font
+    ttf-jetbrains-mono-nerd noto-fonts noto-fonts-cjk noto-fonts-emoji otf-font-awesome
+    # install IME program
+    fcitx5-im fcitx5-anthy fcitx5-configtool wev
+    # install Qt & GTK config tool
+    qt5ct qt6ct nwg-look
+    # install file manager
+    yazi nemo fzf gvfs glib2 gvfs-mtp gvfs-afc gvfs-gphoto2 gvfs-nfs gvfs-smb gvfs-dnssd gvfs-goa gvfs-onedrive gvfs-wsdd xdg-user-dirs
+    # install screen capture program
+    grim wf-recorder slurp
+    # install fastfetch
+    fastfetch imagemagick
+    # install system monitor
+    btop bottom systemctl-tui
+    # install document utils
+    okular libreoffice-still readest
+    # install multimedia utils
+    eog mpv gthumb
+    # install audio utils
+    pipewire pipewire-pulse wireplumber pavucontrol termusic easyeffects
+    # install network utils
+    networkmanager
+    # install sway utils
+    sway swaybg swayidle rofi-wayland rofi-calc waybar inotify-tools
+    # install hyprland utils
+    xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland hyprland hyprshot hypridle hyprlock hyprpaper hyprshutdown hyprsunset
+    # install manual pages
+    man-db man-pages tldr
+    # install LSP and formatter
+    yamlfmt shfmt taplo-cli ty jedi-language-server python-lsp-server
+)
 
-def is_done [name: string] {
-   $log | lines | any {|i| $i == $name} 
-}
+# npm config
+npm config set prefix ~/.npm-global
 
-def done [name: string] {
-  $"($name)\n" | save -a ./log
-}
+# install yay
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+cd ..
 
-def big_text [text: string] {
-  print $"(ansi greenyellow)(/usr/bin/figlet -t $text)(ansi reset)"
-} 
+(yay -Syu --needed
+    # install tablet driver
+    opentabletdriver
+    # install pacman-static
+    pacman-static
+    # install browser
+    zen-browser-bin
+    brave-bin
+    helium-browser-bin
+    # install anki
+    anki-bin
+    # install appimagelauncher
+    appimagelauncher
+    # install sway utils
+    swaylock-effects
+    light
+    # install LSP & formatter
+    lemminx
+    zprint-bin
+    # install OCR program
+    quicksnip-git
+    # install superproductivity
+    superproductivity-bin
+    # install document utils
+    onlyoffice-bin
+    logseq-desktop-bin
+    # install file manager
+    simple-mtpfs   
+)
 
-# initial installation
-if (is_done 'initial installation') == false {
-  sudo pacman -Syu curl wget desktop-file-utils base-devel figlet
-  done 'initial installation'
-}
+(bun install -g
+    vscode-langservers-extracted
+    dockerfile-language-server-nodejs
+    "@microsoft/compose-language-service"
+    "@tailwindcss/language-server"
+    bash-language-server
+    typescript
+    typescript-language-server
+    "@vue/language-server"
+    prettier
+    sql-language-server
+)
 
-# install rust
-if (is_done 'install rust') == false {
-  big_text 'install rust'
-  ^curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | ^sh
-  done 'install rust'
-}
+# install rustup
+^curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | ^sh
 
-# install git
-if (is_done 'install git') == false {
-  big_text 'install git'
-  sudo pacman -S git
-  done 'install git'
-}
+# install rust-analyzer
+^rustup component add rust-analyzer
 
-# install yay AUR helper
-if (is_done 'install AUR helper') == false {
-  big_text 'install AUR helper'
-  git clone https://aur.archlinux.org/yay-bin.git
-  cd yay-bin 
-  makepkg -si 
-  cd .. 
-  done 'install AUR helper'
-}
+(^cargo install
+    emmylua_ls
+    emmylua_check
+    emmylua_doc_cli
+)
 
-# install npm
-if (is_done 'install npm') == false {
-  big_text 'install npm'
-  sudo pacman -S npm
-  npm config set prefix ~/.npm-global
-  done 'install npm'
-}
+# enable and run systemd user services
+(^systemctl enable --now --user
+    syncthing.service
+    pipewire.service
+    pipewire-pulse.service
+    wireplumber.service
+)
 
-# install bun
-if (is_done 'install bun') == false {
-  big_text 'install bun'
-  sudo pacman -S unzip
-  /usr/bin/nu -c "curl -fsSL https://bun.sh/install | bash"
-  done 'install bun'
-}
+# enable and run systemd system services
+(^systemctl enable --now
+    dockerd.socket
+    NetworkManager.service
+)
 
-# install tablet driver
-if (is_done 'install tablet driver') == false {
-  big_text 'install tablet driver'
-  yay -S opentabletdriver
-  done 'install tablet driver'
-}
+# Hide window button from GTK window
+dconf write /org/gnome/desktop/wm/preferences/button-layout "':'"
 
-# install pacman-static
-if (is_done 'install pacman-static') == false {
-  big_text 'install pacman-static'
-  yay -S pacman-static
-  done 'install pacman-static'
-}
+# user and shell configuration
+sudo usermod -aG video "$USER"
+sudo chsh -s /usr/bin/nu "$USER"
 
-# install browser
-if (is_done 'install browsers') == false {
-  big_text 'install browsers'
-  /usr/bin/nu -c "curl -fsS https://dl.brave.com/install.sh | sh"
-  yay -S zen-browser-bin
-  sudo pacman -S firefox-developer-edition
-  done 'install browsers'
-}
+# others
+xdg-user-dirs-update
+light -N 5
+zoxide init nushell | save -f ~/.zoxide.nu
+ya pkg add boydaihungst/gvfs
 
-# install helix
-if (is_done 'install helix editor') == false {
-  big_text 'install helix editor'
-  sudo pacman -S helix
-  done 'install helix editor'
-}
-
-# install syncthing
-if (is_done 'install syncthing') == false {
-  big_text 'install syncthing'
-  sudo pacman -S syncthing
-  done 'install syncthing'
-}
-
-# install clipboard manager
-if (is_done 'install clipboard manager') == false {
-  big_text 'install clipboard manager'
-  sudo pacman -S wl-clipboard
-  done 'install clipboard manager'
-}
-
-# install docker
-if (is_done 'install docker') == false {
-  big_text 'install docker'
-  sudo pacman -S docker docker-buildx docker-compose
-  done 'install docker'
-}
-
-# install LSP & formatter
-if (is_done 'install LSP & formatter') == false {
-  big_text 'install LSP & formatter'
-  npm i -g vscode-langservers-extracted
-  npm install -g dockerfile-language-server-nodejs
-  npm install -g @microsoft/compose-language-service
-  npm i -g @tailwindcss/language-server
-  npm i -g bash-language-server
-  sudo pacman -S yamlfmt
-  npm install -g typescript typescript-language-server
-  npm i -g @vue/language-server
-  npm i -g prettier
-  npm i -g sql-language-server
-  cargo install taplo-cli --features lsp
-  sudo pacman -S shfmt
-  yay -S lemminx zprint-bin
-  rustup component add rust-analyzer
-  done 'install LSP & formatter'
-}
-
-# install terminal
-if (is_done 'install terminal') == false {
-  big_text 'install terminal'
-  sudo pacman -S kitty picom
-  done 'install terminal'
-}
-
-# install starship
-if (is_done 'install starship') == false {
-  big_text 'install starship'
-  sudo pacman -S starship
-  done 'install starship'
-}
-
-# install anki
-if (is_done 'install anki') == false {
-  big_text 'install anki'
-  yay -S anki-bin
-  done 'install anki'
-}
-
-# install appimagelauncher
-if (is_done 'install appimagelauncher') == false {
-  big_text 'install appimagelauncher'
-  yay -S appimagelauncher
-  done 'install appimagelauncher'
-}
-
-# install zoxide
-if (is_done 'install zoxide') == false {
-  big_text 'install zoxide'
-  sudo pacman -S zoxide
-  zoxide init nushell
-  done 'install zoxide'
-}
-
-# install bat
-if (is_done 'install bat') == false {
-  big_text 'install bat'
-  sudo pacman -S bat
-  done 'install bat'
-}
-
-# install ripgrep
-if (is_done 'install ripgrep') == false {
-  big_text 'install ripgrep'
-  sudo pacman -S ripgrep
-  done 'install ripgrep'
-}
-
-# install dunst
-if (is_done 'install dunst') == false {
-  big_text 'install dunst'
-  sudo pacman -S dunst
-  done 'install dunst'
-}
-
-# install VPN
-if (is_done 'install VPN') == false {
-  big_text 'install VPN'
-  sudo pacman -S openvpn wireguard-tools systemd-resolvconf proton-vpn-gtk-app
-  done 'install VPN'
-}
-
-# install font
-if (is_done 'install font') == false {
-  big_text 'install font'
-  sudo pacman -S ttf-jetbrains-mono-nerd noto-fonts noto-fonts-cjk noto-fonts-emoji otf-font-awesome
-  done 'install font'
-}
-
-# install input method program
-if (is_done 'install input method program') == false {
-  big_text 'install input method program'
-  sudo pacman -S fcitx5-im fcitx5-anthy fcitx5-configtool wev
-  done 'install input method program'
-}
-
-# install install QT & GTK config tool
-if (is_done 'install QT & GTK config tool') == false {
-  big_text 'install QT & GTK config tool'
-  sudo pacman -S qt5ct qt6ct nwg-look
-  done 'install QT & GTK config tool'
-}
-
-# install file manager
-if (is_done 'install file manager') == false {
-  big_text 'install file manager'
-  sudo pacman -S yazi nemo fzf
-  ya pkg add boydaihungst/gvfs
-  sudo pacman -S gvfs glib2
-  sudo pacman -S gvfs-mtp gvfs-afc gvfs-google gvfs-gphoto2 gvfs-nfs gvfs-smb gvfs-afc gvfs-dnssd gvfs-goa gvfs-onedrive gvfs-wsdd
-  yay -S simple-mtpfs
-  done 'install file manager'
-}
-
-# install superproductivity
-if (is_done 'install pomodoro timer') == false {
-  big_text 'install pomodoro timer'
-  yay -S superproductivity-bin
-  done 'install pomodoro timer'
-}
-
-# install screen capture program
-if (is_done 'install screen capture program') == false {
-  big_text 'install screen capture program'
-  sudo pacman -S grim wf-recorder slurp
-  done 'install screen capture program'
-}
-
-# install OCR program
-if (is_done 'install OCR program') == false {
-  big_text 'install OCR program'
-  yay -S quicksnip-git
-  done 'install OCR program'
-}
-
-# install fastfetch
-if (is_done 'install fastfetch') == false {
-  big_text 'install fastfetch'
-  sudo pacman -S fastfetch imagemagick
-  done 'install fastfetch'
-}
-
-# install system monitor
-if (is_done 'install system monitor') == false {
-  big_text 'install system monitor'
-  sudo pacman -S btop
-  done 'install system monitor'
-}
-
-# install document utils
-if (is_done 'install document utils') == false {
-  big_text 'install document utils'
-  yay -S onlyoffice-bin logseq-desktop-bin
-  sudo pacman -S okular libreoffice-still
-  done 'install document utils'
-}
-
-# install multimedia utils
-if (is_done 'install multimedia utils') == false {
-  big_text 'install multimedia utils'
-  sudo pacman -S eog mpv vvave gthumb
-  done 'install multimedia utils'
-}
-
-# install audio utils
-if (is_done 'install audio utils') == false {
-  big_text 'install audio utils'
-  sudo pacman -S pipewire pipewire-pulse wireplumber pavucontrol termusic
-  done 'install audio utils'
-}
-
-# install network utils
-if (is_done 'install network utils') == false {
-  big_text 'install network utils'
-  sudo pacman -S networkmanager
-  done 'install network utils'
-}
-
-# install sway utils
-if (is_done 'install sway utils') == false {
-  big_text 'install sway utils'
-  yay -S swaylock-effects light
-  sudo usermod -aG video (^whoami)
-  light -N 5
-  sudo pacman -S sway swaybg swayidle rofi-wayland rofi-calc waybar inotify-tools
-  done 'install sway utils'
-}
-
-# install hyprland utils
-if (is_done 'install hyprland utils') == false {
-  big_text 'install hyprland utils'
-  sudo pacman -S xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland hyprland hyprshot hypridle hyprlock hyprpaper hyprsunset
-  done 'install hyprland utils'
-}
-
-# install manual
-if (is_done 'install manual') == false {
-  big_text 'install manual'
-  sudo pacman -S man-db tldr
-  done 'install manual'
-}
